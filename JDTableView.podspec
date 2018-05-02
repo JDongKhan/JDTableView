@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "JDTableView"
-  s.version      = "1.2.2"
+  s.version      = '0.0.1' 
   s.summary      = "JDTableView"
 
   s.description  = <<-DESC

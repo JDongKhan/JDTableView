@@ -1,7 +1,4 @@
 # JDTableView
----------------------
-以更名为JD开头，老项目已不再使用！
----------------------
 
 对tableview的拓展，利用runtime的class_addMethod动态实现datasource和delegate方法，不用实现一个方法即可展示数据，当然你可以根据自己的喜好来实现也行！
 

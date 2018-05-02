@@ -1,13 +1,13 @@
 //
-//  UITableView+Simplify.m
+//  UITableView+JDExtension.m
 //  JDCore
 //
 //  Created by 王金东 on 15/7/28.
 //  Copyright (c) 2015年 王金东. All rights reserved.
 //
 
-#import "UITableView+Simplify.h"
-#import "UITableViewCell+Simplify.h"
+#import "UITableView+JDExtension.h"
+#import "UITableViewCell+JDExtension.h"
 #import "JDViewModel.h"
 #import "JDTableView_marco_private.h"
 #import "UITableView+Private.h"
@@ -16,7 +16,7 @@
 #pragma mark  ----属性
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wprotocol"
-@implementation UITableView (Simplify)
+@implementation UITableView (JDExtension)
 #pragma clang diagnostic pop
 
 #pragma mark -----------------------------set方法----------------------------------

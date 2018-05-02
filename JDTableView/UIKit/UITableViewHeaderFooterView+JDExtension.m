@@ -1,13 +1,13 @@
 //
-//  UITableViewHeaderFooterView+Simplify.m
+//  UITableViewHeaderFooterView+JDExtension.m
 //
 //  Created by JD on 2017/9/27.
 //  Copyright © 2017年 JD. All rights reserved.
 //
 
-#import "UITableViewHeaderFooterView+Simplify.h"
+#import "UITableViewHeaderFooterView+JDExtension.h"
 
-@implementation UITableViewHeaderFooterView (Simplify)
+@implementation UITableViewHeaderFooterView (JDExtension)
 
 - (CGFloat)jd_tableView:(UITableView *)tableView sectionInfo:(id)sectionInfo {
     return 44.0f;

@@ -1,5 +1,5 @@
 //
-//  UITableViewCell+Simplify.h
+//  UITableViewCell+JDExtension.h
 //  JDCore
 //
 //  Created by 王金东 on 15/7/28.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface UITableViewCell (Simplify)
+@interface UITableViewCell (JDExtension)
 
 // 行数
 @property (nonatomic,strong) NSIndexPath *jd_indexPath;

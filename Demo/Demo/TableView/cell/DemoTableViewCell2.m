@@ -7,7 +7,7 @@
 //
 
 #import "DemoTableViewCell2.h"
-#import <JDTableView/UITableViewCell+Simplify.h>
+#import <JDTableView/UITableViewCell+JDExtension.h>
 
 @implementation DemoTableViewCell2 {
     

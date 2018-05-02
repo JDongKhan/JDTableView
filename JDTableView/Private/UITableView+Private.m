@@ -8,7 +8,7 @@
 
 #import "UITableView+Private.h"
 #import "JDTableView_marco_private.h"
-#import "UITableView+Simplify.h"
+#import "UITableView+JDExtension.h"
 #import "JDViewModel.h"
 #import <objc/runtime.h>
 #import "JDTableViewDelegate.h"

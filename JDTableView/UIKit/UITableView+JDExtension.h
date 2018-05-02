@@ -1,5 +1,5 @@
 //
-//  UITableView+Simplify.h
+//  UITableView+JDExtension.h
 //  JDCore
 //
 //  Created by 王金东 on 15/7/28.
@@ -66,7 +66,7 @@ typedef void (^JDTableViewCellLoadBlock)(UITableViewCell *cell,NSIndexPath *inde
 
 @class JDViewModel;
 
-@interface UITableView (Simplify)
+@interface UITableView (JDExtension)
 
 // cel的类名或xib'名称组成的数组
 @property (nonatomic, strong) NSArray  *jd_tableViewCellArray;

@@ -8,12 +8,12 @@
 
 #import "JDTableViewDelegate.h"
 #import "JDBlockDescription.h"
-#import "UITableViewCell+Simplify.h"
+#import "UITableViewCell+JDExtension.h"
 #import "JDViewModel.h"
 #import <objc/runtime.h>
 #import "UITableView+Private.h"
-#import "UITableView+Simplify.h"
-#import "UITableViewHeaderFooterView+Simplify.h"
+#import "UITableView+JDExtension.h"
+#import "UITableViewHeaderFooterView+JDExtension.h"
 
 @implementation JDTableViewDelegate
 

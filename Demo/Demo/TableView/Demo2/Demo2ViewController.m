@@ -10,7 +10,7 @@
 #import "DataUtils.h"
 #import <JDTableView/JDViewModel.h>
 #import <JDTableView/JDSectionModel.h>
-#import <JDTableView/UITableView+Simplify.h>
+#import <JDTableView/UITableView+JDExtension.h>
 @import JDAutoLayout;
 
 @interface Demo2ViewController ()

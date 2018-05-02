@@ -7,9 +7,9 @@
 //
 
 #import "JDTableViewDataSource.h"
-#import "UITableView+Simplify.h"
+#import "UITableView+JDExtension.h"
 #import "JDViewModel.h"
-#import "UITableViewCell+Simplify.h"
+#import "UITableViewCell+JDExtension.h"
 #import "UITableView+Private.h"
 
 @implementation JDTableViewDataSource

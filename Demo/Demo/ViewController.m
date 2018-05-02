@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <JDTableView/JDViewModel.h>
 #import <JDTableView/JDSectionModel.h>
-#import <JDTableView/UITableView+Simplify.h>
+#import <JDTableView/UITableView+JDExtension.h>
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 

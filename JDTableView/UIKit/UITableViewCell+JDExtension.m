@@ -1,17 +1,17 @@
 //
-//  UITableViewCell+Simplify.m
+//  UITableViewCell+JDExtension.m
 //  JDCore
 //
 //  Created by 王金东 on 15/7/28.
 //  Copyright (c) 2015年 王金东. All rights reserved.
 //
 
-#import "UITableViewCell+Simplify.h"
+#import "UITableViewCell+JDExtension.h"
 #import "JDTableView_marco_private.h"
 #import <objc/runtime.h>
 #import "JDSectionModel.h"
 
-@implementation UITableViewCell (Simplify)
+@implementation UITableViewCell (JDExtension)
 
 #pragma mark -----------------------------set方法----------------------------------
 

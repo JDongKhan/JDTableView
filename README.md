@@ -1,193 +1,35 @@
-# JDAutoLayout
-超简易的约束布局
+# JDTableView
+---------------------
+以更名为JD开头，老项目已不再使用！
+---------------------
 
-![demo png](https://github.com/wangjindong/JDLayout/blob/master/demo.gif "demo")
+对tableview的拓展，利用runtime的class_addMethod动态实现datasource和delegate方法，不用实现一个方法即可展示数据，当然你可以根据自己的喜好来实现也行！
 
-## cocoapods使用
 
-    pod 'JDAutoLayout', '~> 1.1.7'
+ >IOS项目用的最多的控件中tableview恐怕是有着举足轻重位置，可是你如果还在自己实现tableview的delegate和datasource恐怕就low了，尤其是delegate和datasource逻辑大同小异，而本项目就是针对一个数组来分析实现掉delegate和datasource，甚至完全靠一个数组源都能全部处理掉tableview的渲染和事件处理。
+ 
+ 这种写法也能帮开发者只关注数据和界面，不需要考虑tableview的渲染逻辑
 
-## 一、更新现有的约束
 
-    self.button2.jd_left(self.button1).jd_equal(100).jd_reload();
+# -------惯例先上图，图丑但是它不是重点------
+此效果图的实现可看代码，及其简单，不用实现一行协议代码
 
-## 二、垂直平分
-
-    //垂直平分
-    UILabel *label1 = [[UILabel alloc] init];
-    label1.text = @"我是垂直平分1";
-    label1.backgroundColor = [UIColor redColor];
-    label1.textAlignment = NSTextAlignmentCenter;
-    [self.view1 addSubview:label1];
-    
-    UILabel *label2 = [[UILabel alloc] init];
-    label2.text = @"我是垂直平分2";
-    label2.backgroundColor = [UIColor blueColor];
-    label2.textAlignment = NSTextAlignmentCenter;
-    [self.view1 addSubview:label2];
-    
-    label1
-    .jd_top(self.view1).jd_equal(0)
-    .jd_centerX(self.view1).jd_equal(0)
-    .jd_layout();
-    
-    label2
-    .jd_top(label1).jd_equal(0)
-    .jd_centerX(label1).jd_equal(0)
-    .jd_bottom(self.view1).jd_equal(0)
-    .jd_height(label1)
-    .jd_layout();
-    
-   简易的写法：
-   
-    self.view1.jd_equalHeightSubViews(@[label1,label2]);
-
-## 三、水平平分
-
-    //水平平分
-    UILabel *label11 = [[UILabel alloc] init];
-    label11.text = @"我是水平平分1";
-    label11.backgroundColor = [UIColor redColor];
-    label11.textAlignment = NSTextAlignmentCenter;
-    [self.view2 addSubview:label11];
-    UILabel *label21 = [[UILabel alloc] init];
-    label21.text = @"我是水平平分2";
-    label21.backgroundColor = [UIColor blueColor];
-    label21.textAlignment = NSTextAlignmentCenter;
-    [self.view2 addSubview:label21];
-
-    label11
-    .jd_left(self.view2).jd_equal(0)
-    .jd_centerY(self.view2).jd_equal(0)
-    .jd_layout();
-    
-    label21
-    .jd_left(label11).jd_equal(0)
-    .jd_centerY(label11).jd_equal(0)
-    .jd_right(self.view2).jd_equal(0)
-    .jd_width(label11)
-    .jd_layout();
-    
-   简易的写法
-    
-    self.view2.jd_equalWidthSubViews(@[label1,label21]);
-    
-## 四、对齐
-
-    //水平平分
-    UILabel *label11 = [[UILabel alloc] init];
-    label11.text = @"我是1";
-    label11.backgroundColor = [UIColor redColor];
-    label11.textAlignment = NSTextAlignmentCenter;
-    [self.view3 addSubview:label11];
-    
-    label11
-    .jd_left(self.view3).jd_equal(10)
-    .jd_top(self.view3).jd_equal(10)
-    .jd_layout();
-    
-    UILabel *label21 = [[UILabel alloc] init];
-    label21.text = @"我是2";
-    label21.backgroundColor = [UIColor blueColor];
-    label21.textAlignment = NSTextAlignmentCenter;
-    [self.view3 addSubview:label21];
-    //与label11左对齐
-    label21
-    .jd_left(label11.jd_leftAttribute).jd_equal(0)
-    .jd_top(label11).jd_equal(10)
-    .jd_layout();
-    
-    
-
-## 五、支持lessThanOrEqual、greaterThanOrEqual、equal等
+![](https://github.com/wangjindong/JDTableView/blob/master/tableview.gif)
 
 
 
-### 只有一个类，以下是所有方法，支持绝大多数场景。
+设计理念：动态添加委托方法，实现tableview的委托，不需要程序猿实现任何接口方法，所有可能来源均有数据结构（即数组）提供！
 
-    @interface UIView (JDAutolayout)
+该方法支持在数据里面增加tableview的选择事件，默认的cell样式、accessoryView,block等等！
 
-    /**
-       约束基本设置
-    */
-    - (JDRelation *(^)(id attr))jd_left;
-    - (JDRelation *(^)(id attr))jd_top;
-    - (JDRelation *(^)(id attr))jd_right;
-    - (JDRelation *(^)(id attr))jd_bottom;
-    - (JDRelation *(^)(id attr))jd_centerX;
-    - (JDRelation *(^)(id attr))jd_centerY;
-    - (JDRelation *(^)(id attr))jd_width;
-    - (JDRelation *(^)(id attr))jd_height;
-    /**
-     宽高比
-     */
-    - (UIView *(^)(CGFloat ratio))jd_aspectRatio;
-    
-    /**
-     连接方法，用于逻辑上连接下一个语句
-     */
-    - (UIView *(^)(void))jd_and;
-    
-    /**
-    重置约束
-    */
-    - (UIView *(^)(void))jd_reset;
 
-    /**
-    约束布局
-    */
-    - (void(^)(void))jd_layout;
-    - (void(^)(void))jd_reload;
+如果你有好的建议请联系我:419591321@qq.com,其实自己仔细琢磨更有意思！
 
-    @end
+ 
+# CocoaPods
 
-    @interface UIView (JDAutolayoutExtention)
+1、在 Podfile 中添加 `pod 'JDTableView'`。
 
-    /**
-     对width和height的封装
-     */
-    - (UIView *(^)(CGSize size))jd_size;
-    - (UIView *(^)(CGRect frame))jd_frame;
-    - (UIView *(^)(UIEdgeInsets insets))jd_insets;
-    
-    /**
-    子view等宽、等高
-    */
-    - (void(^)(NSArray *subViews))jd_equalWidthSubViews;
-    - (void(^)(NSArray *subViews))jd_equalHeightSubViews;
+2、执行 `pod install` 或 `pod update`。
 
-    @end
-
-    @interface JDRelation : NSObject
-
-    /**
-     倍数
-     */
-    - (JDRelation *(^)(CGFloat multiplier))jd_multiplier;
-
-    /**
-    约束关系
-    */
-    - (UIView *(^)(CGFloat constant))jd_equal;
-    - (UIView *(^)(CGFloat constant))jd_lessThanOrEqual;
-    - (UIView *(^)(CGFloat constant))jd_greaterThanOrEqual;
-
-    /**
-    连接方法，用于逻辑上连接下一个语句
-    */
-    - (UIView *(^)(void))jd_and;
-
-    /**
-     约束布局
-    */
-    - (void(^)(void))jd_layout;
-    - (void(^)(void))jd_reload;
-
-    @end
-    
- ##  六、支持swift调用
-     //swift封装的布局类
-     self.view1 = UIView.init()
-     self.view1.backgroundColor = UIColor.red
-     self.view.addSubview(self.view1)
-     self.view1.sf_frame(CGRect(x: 50, y: 300, width: 100, height: 100)).sf_layout()
+3、导入 \<JDTableView/JDTableView.h\>。

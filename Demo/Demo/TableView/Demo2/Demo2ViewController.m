@@ -30,9 +30,8 @@
     [self.view addSubview:self.tableView];
     self.tableView.jd_insets(UIEdgeInsetsZero).jd_layout();
     
-    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
-    self.tableView.jd_viewModel = self.tableViewModel;
     [self configTableView];
+    
     [self configDataSource];
 }
 
@@ -50,6 +49,9 @@
 }
 
 - (void)configDataSource {
+    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
+    self.tableView.jd_viewModel = self.tableViewModel;
+    
     NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
     [self.tableViewModel addSectionDataWithArray:data[@"items"]];
 }

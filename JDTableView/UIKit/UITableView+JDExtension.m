@@ -38,6 +38,7 @@
 - (JDTableViewConfig *)jd_config {
     return objc_getAssociatedObject(self, _cmd);
 }
+
 - (void)registerCell:(JDTableViewConfig *)config {
     NSArray *array = config.tableViewCellArray;
     for (NSInteger i = 0; i < array.count; i++) {

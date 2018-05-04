@@ -28,9 +28,6 @@
     [self.view addSubview:self.tableView];
     self.tableView.jd_insets(UIEdgeInsetsZero).jd_layout();
     
-    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
-    self.tableView.jd_viewModel = self.tableViewModel;
-    
     //配置tableView
     [self configTableView];
     
@@ -56,17 +53,19 @@
         return 0;
     };
     //编辑
-//    self.tableView.jd_canEditable = ^BOOL(NSIndexPath *indexPath) {
-//        return YES;
-//    };
-//
-//    self.tableView.jd_singleLineDeleteAction = ^(NSIndexPath *indexPath) {
-//        NSLog(@"我要删除第%ld行",indexPath.row);
-//    };
+    config.canEditable = ^BOOL(NSIndexPath *indexPath) {
+        return YES;
+    };
+
+    config.singleLineDeleteAction = ^(NSIndexPath *indexPath) {
+        NSLog(@"我要删除第%ld行",indexPath.row);
+    };
     self.tableView.jd_config = config;
 }
 
 - (void)configDataSource {
+    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
+    self.tableView.jd_viewModel = self.tableViewModel;
     
     for (NSInteger i = 0; i < 4; i++) {
         //开始组织对象

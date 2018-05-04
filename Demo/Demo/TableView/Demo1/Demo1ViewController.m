@@ -55,27 +55,29 @@
         return 0;
     };
     //编辑
-    self.tableView.jd_canEditable = ^BOOL(NSIndexPath *indexPath) {
-        return YES;
-    };
-    
-    self.tableView.jd_singleLineDeleteAction = ^(NSIndexPath *indexPath) {
-        NSLog(@"我要删除第%ld行",indexPath.row);
-    };
+//    self.tableView.jd_canEditable = ^BOOL(NSIndexPath *indexPath) {
+//        return YES;
+//    };
+//
+//    self.tableView.jd_singleLineDeleteAction = ^(NSIndexPath *indexPath) {
+//        NSLog(@"我要删除第%ld行",indexPath.row);
+//    };
 }
 
 - (void)configDataSource {
     
-    //开始组织对象
-    JDSectionModel *section1 = [[JDSectionModel alloc] init];
-    //section1.title = @"TableView";
-    section1.sectionData = @"我是自定义数据";
-    section1.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
-        return [dataInfo[@"type"] integerValue];
-    };
-    NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
-    [section1 addRowDatasFromArray:data[@"items"]];
-    [self.tableViewModel addSectionData:section1];
+    for (NSInteger i = 0; i < 4; i++) {
+        //开始组织对象
+        JDSectionModel *section = [[JDSectionModel alloc] init];
+        //section1.title = @"TableView";
+        section.sectionData = [NSString stringWithFormat:@"我是自定义数据%ld",i];
+        section.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
+            return [dataInfo[@"type"] integerValue];
+        };
+        NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
+        [section addRowDatasFromArray:data[@"items"]];
+        [self.tableViewModel addSectionData:section];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

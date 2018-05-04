@@ -13,6 +13,7 @@
 #import <objc/runtime.h>
 #import "UITableView+Private.h"
 #import "UITableView+JDExtension.h"
+#import "UITableView+JDIndexPathHeightCache.h"
 #import "UITableViewHeaderFooterView+JDExtension.h"
 
 @implementation JDTableViewDelegate
@@ -102,14 +103,14 @@
             //我是来判断是否缓存了高度
             //缓存用的是UITableView+UITableView+FDIndexPathHeightCache,
             //当然感谢作者帮我们做了这个，不然还要自己写缓存 /(ㄒoㄒ)/~~
-//            if (tableView.jd_supportHeightCache && [tableView.indexPathHeightCache existsHeightAtIndexPath:indexPath]) {
-//                return [tableView.indexPathHeightCache heightForIndexPath:indexPath];
-//            }
+            if (tableView.jd_supportHeightCache && [tableView.indexPathHeightCache existsHeightAtIndexPath:indexPath]) {
+                return [tableView.indexPathHeightCache heightForIndexPath:indexPath];
+            }
             //给cell的dataInfo赋值,并计算高度
             CGFloat height =  [cell jd_tableView:tableView cellInfo:dataInfo];
-//            if (tableView.jd_supportHeightCache) {
-//                [tableView.indexPathHeightCache cacheHeight:height byIndexPath:indexPath];
-//            }
+            if (tableView.jd_supportHeightCache) {
+                [tableView.indexPathHeightCache cacheHeight:height byIndexPath:indexPath];
+            }
             return height;
         }
     }

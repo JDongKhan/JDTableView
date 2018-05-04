@@ -17,9 +17,6 @@
 		696C4A9320898472001EC7EA /* Demo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C4A8C20898472001EC7EA /* Demo1ViewController.m */; };
 		696C4A9720898C63001EC7EA /* Demo31ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C4A9620898C63001EC7EA /* Demo31ViewController.m */; };
 		696C4A9A20898C6C001EC7EA /* Demo32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C4A9920898C6C001EC7EA /* Demo32ViewController.m */; };
-		696C4AA020899105001EC7EA /* first.json in Resources */ = {isa = PBXBuildFile; fileRef = 696C4A9C20899105001EC7EA /* first.json */; };
-		696C4AA120899105001EC7EA /* second.json in Resources */ = {isa = PBXBuildFile; fileRef = 696C4A9D20899105001EC7EA /* second.json */; };
-		696C4AA220899105001EC7EA /* DataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C4A9E20899105001EC7EA /* DataUtils.m */; };
 		696C4AA520899795001EC7EA /* FirstTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C4AA420899795001EC7EA /* FirstTableViewHeaderFooterView.m */; };
 		69CF92D720687F9400A389B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92D620687F9400A389B5 /* AppDelegate.m */; };
 		69CF92DA20687F9400A389B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92D920687F9400A389B5 /* ViewController.m */; };
@@ -29,6 +26,9 @@
 		69CF92E520687F9400A389B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92E420687F9400A389B5 /* main.m */; };
 		69CF92EF20687F9400A389B5 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92EE20687F9400A389B5 /* DemoTests.m */; };
 		69CF92FA20687F9400A389B5 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92F920687F9400A389B5 /* DemoUITests.m */; };
+		69EDF960209C5C8B00A18721 /* first.json in Resources */ = {isa = PBXBuildFile; fileRef = 69EDF95C209C5C8B00A18721 /* first.json */; };
+		69EDF961209C5C8B00A18721 /* second.json in Resources */ = {isa = PBXBuildFile; fileRef = 69EDF95D209C5C8B00A18721 /* second.json */; };
+		69EDF962209C5C8B00A18721 /* DataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EDF95E209C5C8B00A18721 /* DataUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +66,6 @@
 		696C4A9620898C63001EC7EA /* Demo31ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demo31ViewController.m; sourceTree = "<group>"; };
 		696C4A9820898C6C001EC7EA /* Demo32ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demo32ViewController.h; sourceTree = "<group>"; };
 		696C4A9920898C6C001EC7EA /* Demo32ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demo32ViewController.m; sourceTree = "<group>"; };
-		696C4A9C20899105001EC7EA /* first.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = first.json; sourceTree = "<group>"; };
-		696C4A9D20899105001EC7EA /* second.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = second.json; sourceTree = "<group>"; };
-		696C4A9E20899105001EC7EA /* DataUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtils.m; sourceTree = "<group>"; };
-		696C4A9F20899105001EC7EA /* DataUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtils.h; sourceTree = "<group>"; };
 		696C4AA320899795001EC7EA /* FirstTableViewHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTableViewHeaderFooterView.h; sourceTree = "<group>"; };
 		696C4AA420899795001EC7EA /* FirstTableViewHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewHeaderFooterView.m; sourceTree = "<group>"; };
 		69CF92D220687F9300A389B5 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +84,10 @@
 		69CF92F520687F9400A389B5 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CF92F920687F9400A389B5 /* DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoUITests.m; sourceTree = "<group>"; };
 		69CF92FB20687F9400A389B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69EDF95C209C5C8B00A18721 /* first.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = first.json; sourceTree = "<group>"; };
+		69EDF95D209C5C8B00A18721 /* second.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = second.json; sourceTree = "<group>"; };
+		69EDF95E209C5C8B00A18721 /* DataUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtils.m; sourceTree = "<group>"; };
+		69EDF95F209C5C8B00A18721 /* DataUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtils.h; sourceTree = "<group>"; };
 		9537971FD62E92AA5721EF5A /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		CC9186519D990887B86C6BD2 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,18 +181,6 @@
 			path = Demo3;
 			sourceTree = "<group>";
 		};
-		696C4A9B20899105001EC7EA /* data */ = {
-			isa = PBXGroup;
-			children = (
-				696C4A9C20899105001EC7EA /* first.json */,
-				696C4A9D20899105001EC7EA /* second.json */,
-				696C4A9F20899105001EC7EA /* DataUtils.h */,
-				696C4A9E20899105001EC7EA /* DataUtils.m */,
-			);
-			name = data;
-			path = ../../../JianShuDemo/JianShuDemo/data;
-			sourceTree = "<group>";
-		};
 		69CF92C920687F9300A389B5 = {
 			isa = PBXGroup;
 			children = (
@@ -218,7 +206,7 @@
 		69CF92D420687F9300A389B5 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				696C4A9B20899105001EC7EA /* data */,
+				69EDF95B209C5C8B00A18721 /* data */,
 				696C4A6B20897526001EC7EA /* TableView */,
 				69CF92D520687F9300A389B5 /* AppDelegate.h */,
 				69CF92D620687F9400A389B5 /* AppDelegate.m */,
@@ -251,6 +239,17 @@
 				69CF92FB20687F9400A389B5 /* Info.plist */,
 			);
 			path = DemoUITests;
+			sourceTree = "<group>";
+		};
+		69EDF95B209C5C8B00A18721 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				69EDF95C209C5C8B00A18721 /* first.json */,
+				69EDF95D209C5C8B00A18721 /* second.json */,
+				69EDF95E209C5C8B00A18721 /* DataUtils.m */,
+				69EDF95F209C5C8B00A18721 /* DataUtils.h */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		6E0D6B775B1D30272CBD32D4 /* Pods */ = {
@@ -371,12 +370,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				696C4AA020899105001EC7EA /* first.json in Resources */,
+				69EDF960209C5C8B00A18721 /* first.json in Resources */,
 				69CF92E220687F9400A389B5 /* LaunchScreen.storyboard in Resources */,
 				696C4A9020898472001EC7EA /* DemoTableViewCell2.xib in Resources */,
 				69CF92DF20687F9400A389B5 /* Assets.xcassets in Resources */,
 				69CF92DD20687F9400A389B5 /* Main.storyboard in Resources */,
-				696C4AA120899105001EC7EA /* second.json in Resources */,
+				69EDF961209C5C8B00A18721 /* second.json in Resources */,
 				696C4A9120898472001EC7EA /* DemoTableViewCell1.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,11 +447,11 @@
 				696C4AA520899795001EC7EA /* FirstTableViewHeaderFooterView.m in Sources */,
 				69CF92E520687F9400A389B5 /* main.m in Sources */,
 				69CF92D720687F9400A389B5 /* AppDelegate.m in Sources */,
+				69EDF962209C5C8B00A18721 /* DataUtils.m in Sources */,
 				696C4A8E20898472001EC7EA /* DemoTableViewCell1.m in Sources */,
 				696C4A9320898472001EC7EA /* Demo1ViewController.m in Sources */,
 				696C4A9A20898C6C001EC7EA /* Demo32ViewController.m in Sources */,
 				696C4A9220898472001EC7EA /* Demo2ViewController.m in Sources */,
-				696C4AA220899105001EC7EA /* DataUtils.m in Sources */,
 				696C4A9720898C63001EC7EA /* Demo31ViewController.m in Sources */,
 				696C4A8F20898472001EC7EA /* DemoTableViewCell2.m in Sources */,
 			);

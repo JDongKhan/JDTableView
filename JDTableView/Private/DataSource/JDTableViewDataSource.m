@@ -44,7 +44,7 @@
     //取不到，你竟然没有配置该类型的cell，不过我保你不奔溃
     if (cell == nil) {
         //给个默认的class
-        cell = [[UITableViewCell alloc] initWithStyle:tableView.jd_tableViewCellStyle reuseIdentifier:cellID];
+        cell = [[UITableViewCell alloc] initWithStyle:tableView.jd_config.tableViewCellStyle reuseIdentifier:cellID];
     }
     NSAssert([cell isKindOfClass:[UITableViewCell class]], @"cell必须是UITableViewCell的子类");
     //下面都是我苦心为你提供的，方便你在cell里面使用，反正你看着用
@@ -75,16 +75,16 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     //依然你最大，你来决定是否能编辑
-    if (tableView.jd_canEditable) {
-        return tableView.jd_canEditable(indexPath);
+    if (tableView.jd_config.canEditable) {
+        return tableView.jd_config.canEditable(indexPath);
     }
-    return tableView.jd_editable;
+    return tableView.jd_config.editable;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        if (tableView.jd_singleLineDeleteAction) {
-            tableView.jd_singleLineDeleteAction(indexPath);
+        if (tableView.jd_config.singleLineDeleteAction) {
+            tableView.jd_config.singleLineDeleteAction(indexPath);
         }
     }
 }

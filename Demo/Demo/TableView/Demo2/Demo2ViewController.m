@@ -38,18 +38,15 @@
 
 
 - (void)configTableView {
-    self.tableView.jd_tableViewCellArray = @[
+    JDTableViewConfig *config = [[JDTableViewConfig alloc] init];
+    config.tableViewCellArray = @[
                                              [UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
                                              [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
                                              ];
-    self.tableView.jd_cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
-        if ([dataInfo[@"num"] isEqualToString:@"1001"]) {
-            return 0;
-        } else {
-            return 1;
-        }
+    config.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
         return [dataInfo[@"type"] integerValue];
     };
+    self.tableView.jd_config = config;
 }
 
 - (void)configDataSource {

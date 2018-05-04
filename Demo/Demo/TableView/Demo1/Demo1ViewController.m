@@ -44,14 +44,15 @@
 }
 
 - (void)configTableView {
-    self.tableView.jd_tableViewCellArray = @[
+    JDTableViewConfig *config = [[JDTableViewConfig alloc] init];
+    config.tableViewCellArray = @[
                                              [UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
                                              [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
                                              ];
-    self.tableView.jd_tableViewHeaderViewArray = @[
+    config.tableViewHeaderViewArray = @[
                                                    [FirstTableViewHeaderFooterView class]
                                                    ];
-    self.tableView.jd_headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
+    config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
         return 0;
     };
     //编辑
@@ -62,6 +63,7 @@
 //    self.tableView.jd_singleLineDeleteAction = ^(NSIndexPath *indexPath) {
 //        NSLog(@"我要删除第%ld行",indexPath.row);
 //    };
+    self.tableView.jd_config = config;
 }
 
 - (void)configDataSource {

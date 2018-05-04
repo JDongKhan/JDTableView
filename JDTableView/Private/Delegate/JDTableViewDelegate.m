@@ -25,27 +25,27 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
-    if (tableView.jd_willLoadCellBlock) {
-        tableView.jd_willLoadCellBlock(cell,indexPath,dataInfo);
+    if (tableView.jd_config.willLoadCellBlock) {
+        tableView.jd_config.willLoadCellBlock(cell,indexPath,dataInfo);
     }
     //我来帮你处理数据
     [cell jd_render:dataInfo];
     //给你一次自己处理的机会
-    if (tableView.jd_didLoadCellBlock) {
-        tableView.jd_didLoadCellBlock(cell,indexPath,dataInfo);
+    if (tableView.jd_config.didLoadCellBlock) {
+        tableView.jd_config.didLoadCellBlock(cell,indexPath,dataInfo);
     }
 }
 
 //选中cell事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //点击过去就会帮你取消点击后的效果
-    if (tableView.jd_clearsSelectionDelay) {
+    if (tableView.jd_config.clearsSelectionDelay) {
         [JDTableViewDelegate performSelector:@selector(deselect:) withObject:tableView afterDelay:0.5f];
     }
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
     //好吧，你最大，你先处理
-    if (tableView.jd_didSelectCellBlock) {
-        tableView.jd_didSelectCellBlock(indexPath,dataInfo);
+    if (tableView.jd_config.didSelectCellBlock) {
+        tableView.jd_config.didSelectCellBlock(indexPath,dataInfo);
     } else {
         //还是以NSDictionary为主来分析，其它model情况太复杂
         id selectBlock = nil;
@@ -88,8 +88,8 @@
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
     //NSLog(@"计算第%d块，第%d行行高",indexPath.section,indexPath.row);
     //自己计算高度
-    if (tableView.jd_cellHeightBlock) {
-        return tableView.jd_cellHeightBlock(indexPath,dataInfo);
+    if (tableView.jd_config.cellHeightBlock) {
+        return tableView.jd_config.cellHeightBlock(indexPath,dataInfo);
     } else {
         //将计算高度的方法交给cell来处理，cell来做，毕竟cell的高度cell来做不是应该的吗？ 顺便也瘦了vc的身，
         UITableViewCell *cell = nil;
@@ -103,12 +103,12 @@
             //我是来判断是否缓存了高度
             //缓存用的是UITableView+UITableView+FDIndexPathHeightCache,
             //当然感谢作者帮我们做了这个，不然还要自己写缓存 /(ㄒoㄒ)/~~
-            if (tableView.jd_supportHeightCache && [tableView.indexPathHeightCache existsHeightAtIndexPath:indexPath]) {
+            if (tableView.jd_config.supportHeightCache && [tableView.indexPathHeightCache existsHeightAtIndexPath:indexPath]) {
                 return [tableView.indexPathHeightCache heightForIndexPath:indexPath];
             }
             //给cell的dataInfo赋值,并计算高度
             CGFloat height =  [cell jd_tableView:tableView cellInfo:dataInfo];
-            if (tableView.jd_supportHeightCache) {
+            if (tableView.jd_config.supportHeightCache) {
                 [tableView.indexPathHeightCache cacheHeight:height byIndexPath:indexPath];
             }
             return height;
@@ -132,8 +132,8 @@
     }
     
     NSInteger type = -1;
-    if (tableView.jd_headerTypeBlock) {
-        type = tableView.jd_headerTypeBlock(section,sectionInfo);
+    if (tableView.jd_config.headerTypeBlock) {
+        type = tableView.jd_config.headerTypeBlock(section,sectionInfo);
     }
     if (type >= 0) {
         NSString *headerID = jd_tableView_header_cellID(type);
@@ -146,8 +146,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     id sectionInfo = [tableView.jd_viewModel sectionDataAtSection:section];
     NSInteger type = -1;
-    if (tableView.jd_headerTypeBlock) {
-        type = tableView.jd_headerTypeBlock(section,sectionInfo);
+    if (tableView.jd_config.headerTypeBlock) {
+        type = tableView.jd_config.headerTypeBlock(section,sectionInfo);
     }
     if (type >= 0) {
         NSString *headerID = jd_tableView_header_cellID(type);
@@ -215,7 +215,7 @@
 //编缉按扭样式
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     //设置删除多行
-    if (tableView.jd_multiLineDeleteAction != nil) {
+    if (tableView.jd_config.multiLineDeleteAction != nil) {
         return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
     }
     return UITableViewCellEditingStyleDelete;
@@ -223,8 +223,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     //那个删除的text你不高兴可以自己来设置
-    if (tableView.jd_deleteConfirmationButtonTitle != nil) {
-        return tableView.jd_deleteConfirmationButtonTitle;
+    if (tableView.jd_config.deleteConfirmationButtonTitle != nil) {
+        return tableView.jd_config.deleteConfirmationButtonTitle;
     }
     return @"删除";
 }

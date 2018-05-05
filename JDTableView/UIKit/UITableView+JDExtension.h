@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface UITableView (Editable)
+@interface UITableView (JDEditable)
 
 /**
  修改设置多行编辑

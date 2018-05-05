@@ -8,10 +8,22 @@
 #import <Foundation/Foundation.h>
 
 
-//cell type
+
+/**
+ cell type
+
+ @param indexPath 行数信息
+ @param dataInfo 行数据
+ @return 行数据对应cell索引
+ */
 typedef NSInteger (^JDCellTypeBlock)(NSIndexPath *indexPath, id dataInfo) ;
 
-// didSelectRowAtIndexPath
+/**
+ didSelectRowAtIndexPath
+
+ @param indexPath 行数信息
+ @param dataInfo 行数据
+ */
 typedef void    (^JDDidSelectCellBlock)(NSIndexPath *indexPath, id dataInfo) ;
 
 
@@ -24,9 +36,15 @@ typedef void    (^JDDidSelectCellBlock)(NSIndexPath *indexPath, id dataInfo) ;
 - (NSString *)title;
 
 @optional
-// 数据源对应的cell索引
+
+/**
+  数据源对应的cell索引
+ */
 @property(nonatomic, copy) JDCellTypeBlock cellTypeBlock;
-// didSelectRowAtIndexPath
+
+/**
+  didSelectRowAtIndexPath
+ */
 @property(nonatomic, copy) JDDidSelectCellBlock didSelectCellBlock;
 
 @end

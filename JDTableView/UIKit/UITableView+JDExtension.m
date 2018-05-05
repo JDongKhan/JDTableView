@@ -84,7 +84,7 @@
 
 
 #pragma mark ----------------编辑能力------------
-@implementation UITableView (Editable)
+@implementation UITableView (JDEditable)
 
 /**
  修改设置多行编辑

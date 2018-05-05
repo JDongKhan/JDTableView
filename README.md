@@ -20,7 +20,9 @@
 该方法支持在数据里面增加tableview的选择事件，默认的cell样式、accessoryView,block等等！
 
 ## 使用就2步
-  第一步作配置表，比如配置cell的数组，数据对应的cell数组的索引。
+
+ >第一步作配置表，比如配置cell的数组，数据对应的cell数组的索引。
+ 
   第二步构造数据源，将它处取得数据交由JDViewModel来管理。
 
 如：

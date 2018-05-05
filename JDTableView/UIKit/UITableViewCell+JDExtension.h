@@ -8,23 +8,36 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableViewCell (JDExtension)
 
-// 行数
+/**
+ 行数信息
+ */
 @property (nonatomic,strong) NSIndexPath *jd_indexPath;
 
-// 获取tableview
+/**
+ cell所在的tableview
+ */
 @property (nonatomic,weak) UITableView *jd_tableView;
 
-//委托类
+/**
+ tableView的委托类
+ */
 @property (nonatomic,weak) id jd_delegate;
 
-// cell需要实现的方法
-// 框架调用此方法渲染
+/**
+ cell需要实现的方法
+ 框架调用此方法渲染
+ */
 - (void)jd_render:(id)dataInfo;
 
-// 框架调用此方法计算高度
+/**
+ 框架调用此方法计算高度
+ */
 - (CGFloat)jd_tableView:(UITableView *)tableView cellInfo:(id)dataInfo;
 
 @end
+
+NS_ASSUME_NONNULL_END

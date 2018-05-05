@@ -10,9 +10,13 @@
 #import "JDTableViewConfig.h"
 #import "JDViewModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UITableView (JDExtension)
 
-//数据源
+/**
+ 数据源
+ */
 @property (nonatomic, strong) JDViewModel *jd_viewModel;
 
 /**
@@ -27,7 +31,15 @@
 
 @interface UITableView (Editable)
 
+/**
+ 修改设置多行编辑
+
+ @param editing 是否编辑
+ @param animated 是否有动画
+ */
 - (void)jd_setMultiLineEditing:(BOOL)editing animated:(BOOL)animated;
 
 @end
+
+NS_ASSUME_NONNULL_END
 

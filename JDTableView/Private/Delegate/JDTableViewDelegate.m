@@ -39,7 +39,7 @@
 //选中cell事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //点击过去就会帮你取消点击后的效果
-    if (tableView.jd_config.clearsSelectionDelay) {
+    if (tableView.jd_config.clearSelectionDelay) {
         [JDTableViewDelegate performSelector:@selector(deselect:) withObject:tableView afterDelay:0.5f];
     }
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];

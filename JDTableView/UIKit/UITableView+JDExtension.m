@@ -15,8 +15,12 @@
 
 @implementation UITableView (JDExtension)
 
+/**
+ 持有viewModel数据源
+ */
 - (void)setJd_viewModel:(JDViewModel *)jd_viewModel {
     objc_setAssociatedObject(self, @selector(jd_viewModel), jd_viewModel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    //动态的给viewModel里面的delegate和dataSource添加委托实现方法
     [self jd_dynamicDelegate:jd_viewModel.delegate];
     [self jd_dynamicDataSource:jd_viewModel.dataSource];
 }
@@ -26,7 +30,10 @@
 }
 
 #pragma mark 注册cell
-//注册 多个tableviewCell 传入是数组
+
+/**
+ 持有config配置表
+ */
 - (void)setJd_config:(JDTableViewConfig *)config {
     if (config != nil) {
         objc_setAssociatedObject(self, @selector(jd_config), config, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -39,6 +46,9 @@
     return objc_getAssociatedObject(self, _cmd);
 }
 
+/**
+ 注册cell
+ */
 - (void)registerCell:(JDTableViewConfig *)config {
     NSArray *array = config.tableViewCellArray;
     for (NSInteger i = 0; i < array.count; i++) {
@@ -53,6 +63,9 @@
     }
 }
 
+/**
+ 注册headerViewCell
+ */
 - (void)registerHeaderCell:(JDTableViewConfig *)config {
     NSArray *array = config.tableViewHeaderViewArray;
     for (NSInteger i = 0; i < array.count; i++) {
@@ -73,6 +86,12 @@
 #pragma mark ----------------编辑能力------------
 @implementation UITableView (Editable)
 
+/**
+ 修改设置多行编辑
+ 
+ @param editing 是否编辑
+ @param animated 是否有动画
+ */
 - (void)jd_setMultiLineEditing:(BOOL)editing animated:(BOOL)animated {
     if (!editing) {
         NSArray *array = [self indexPathsForSelectedRows];

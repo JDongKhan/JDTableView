@@ -53,35 +53,55 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark  ----------------rowData-----------
 
-//一般用于设置、用户信息等本地界面
-
+/**
+ 一般用于设置、用户信息等本地界面
+ */
 @interface JDRowModel : NSObject
-// the key of  image
+
+/**
+ the key of  image
+ */
 @property (nonatomic, strong) id image;
 
-// the key of  title
+/**
+ the key of  title
+ */
 @property (nonatomic, copy) NSString *title;
 
-// the key of  detail
+/**
+ the key of  detail
+ */
 @property (nonatomic, copy) NSString *detail;
 
-// the key of accessoryType
+/**
+  the key of accessoryType
+ */
 @property (nonatomic, assign) UITableViewCellAccessoryType accessoryType;
 
-// the key of accessoryView
+/**
+  the key of accessoryView
+ */
 @property (nonatomic, strong) UIView *accessoryView;
 
 /******** 样式设置key ********/
-// the key of title color
+/**
+ the key of title color
+ */
 @property (nonatomic, strong) UIColor *titleColor;
 
-// the key of title font
+/**
+  the key of title font
+ */
 @property (nonatomic, strong) UIFont *titleFont;
 
-// the key of detail color
+/**
+  the key of detail color
+ */
 @property (nonatomic, strong) UIColor *detailColor;
 
-// the key of detail font
+/**
+  the key of detail font
+ */
 @property (nonatomic, strong) UIFont *detailFont;
 
 @end

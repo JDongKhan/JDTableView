@@ -86,26 +86,22 @@ NSString *jd_tableView_header_cellID(NSUInteger type) {
 }
 
 void tableView_addMethod(SEL *selectors,int count, Class toClass, Class impClass){
-    //因调用频率较低固可以用此种简单的加锁方式
-    @synchronized (toClass) {
-        Class kClass = [toClass class];
-        Class dClass = impClass;
-        
-        for (NSUInteger index = 0; index < count; index++) {
-            SEL originalSelector = selectors[index];
-            if (originalSelector == NULL) {
-                continue;
-            }
-            IMP originalImp = class_getMethodImplementation(kClass, originalSelector);
-            IMP realImp = class_getMethodImplementation(dClass, originalSelector);
-            if (originalImp != realImp) {
-                Method method = class_getInstanceMethod(dClass, originalSelector);
-                const char *type =  method_getTypeEncoding(method);
-                //如果有方法了 add会失败的，add失败说明由你来处理喽
-                class_addMethod(kClass, originalSelector, realImp,type);
-            }
-            
+    Class kClass = [toClass class];
+    Class dClass = impClass;
+    for (NSUInteger index = 0; index < count; index++) {
+        SEL originalSelector = selectors[index];
+        if (originalSelector == NULL) {
+            continue;
         }
+        IMP originalImp = class_getMethodImplementation(kClass, originalSelector);
+        IMP realImp = class_getMethodImplementation(dClass, originalSelector);
+        if (originalImp != realImp) {
+            Method method = class_getInstanceMethod(dClass, originalSelector);
+            const char *type =  method_getTypeEncoding(method);
+            //如果有方法了 add会失败的，add失败说明由你来处理喽
+            class_addMethod(kClass, originalSelector, realImp,type);
+        }
+        
     }
 }
 

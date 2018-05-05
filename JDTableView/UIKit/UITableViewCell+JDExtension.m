@@ -8,7 +8,6 @@
 
 #import "UITableViewCell+JDExtension.h"
 #import "JDTableView_marco_private.h"
-#import <objc/runtime.h>
 #import "JDSectionModel.h"
 
 @implementation UITableViewCell (JDExtension)

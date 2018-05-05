@@ -95,7 +95,7 @@
         UITableViewCell *cell = nil;
         //JDLog(@"渲染第%d块，第%d行",indexPath.section,indexPath.row);
         //生成cellid
-        NSUInteger type = [tableView typeForRowAtIndexPath:indexPath];
+        NSUInteger type = [tableView jd_typeForRowAtIndexPath:indexPath];
         NSString *cellID = jd_tableView_cellID(type);
         cell = [JDTableViewDelegate tableView:tableView templateCellForReuseIdentifier:cellID delegate:tableView.delegate];
         if (cell != nil) {

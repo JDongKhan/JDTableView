@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) JDTableViewConfig *jd_config;
 
+/**
+ 根据indexPath获取type
+ */
+- (NSUInteger)jd_typeForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

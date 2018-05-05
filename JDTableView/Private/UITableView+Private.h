@@ -14,11 +14,6 @@ extern NSString *jd_tableView_header_cellID(NSUInteger type);
 @interface UITableView (Private)
 
 /**
-  根据indexPath获取type
- */
-- (NSUInteger)typeForRowAtIndexPath:(NSIndexPath *)indexPath;
-
-/**
   动态实现delegate和source
  */
 - (void)jd_dynamic:(id)delegate;

@@ -38,7 +38,7 @@
     UITableViewCell *cell = nil;
     //JDLog(@"渲染第%d块，第%d行",indexPath.section,indexPath.row);
     //生成cellid
-    NSUInteger type = [tableView typeForRowAtIndexPath:indexPath];
+    NSUInteger type = [tableView jd_typeForRowAtIndexPath:indexPath];
     NSString *cellID = jd_tableView_cellID(type);
     cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     //取不到，你竟然没有配置该类型的cell，不过我保你不奔溃

@@ -7,11 +7,9 @@
 //
 
 #import "UITableView+JDExtension.h"
-#import "UITableViewCell+JDExtension.h"
 #import "JDViewModel.h"
-#import "JDTableView_marco_private.h"
+#import <objc/runtime.h>
 #import "UITableView+Private.h"
-#import "JDTableViewConfig.h"
 
 @implementation UITableView (JDExtension)
 
@@ -78,6 +76,31 @@
             [self registerClass:headerView forHeaderFooterViewReuseIdentifier:headerID];
         }
     }
+}
+
+//获取indexPath对应的cell索引
+- (NSUInteger)jd_typeForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger type = 0;
+    if (self.jd_config.tableViewCellArray != nil) {
+        id dataInfo = [self.jd_viewModel rowDataAtIndexPath:indexPath];
+        //先取tableView的全局配置
+        if (self.jd_config.cellTypeBlock) {
+            type =  self.jd_config.cellTypeBlock(indexPath,dataInfo);
+        }
+        //如果section里面配置过，则以section配置为主
+        id<JDSectionModelDataSource> sectionData =  [self.jd_viewModel sectionDataAtSection:indexPath.section];
+        if ([sectionData respondsToSelector:@selector(cellTypeBlock)]) {
+            JDCellTypeBlock cellTypeBlock = [sectionData cellTypeBlock];
+            if (cellTypeBlock) {
+                type =  cellTypeBlock(indexPath,dataInfo);
+            }
+        }
+        //但是你不能超过cell的种类
+        if (type >= self.jd_config.tableViewCellArray.count) {//如果得到的type大于数组的长度 则默认等于0位置的type
+            type = 0;
+        }
+    }
+    return type;
 }
 
 @end

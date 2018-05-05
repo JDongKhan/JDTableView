@@ -24,7 +24,6 @@ typedef void    (^JDDidSelectCellBlock)(NSIndexPath *indexPath, id dataInfo) ;
 - (NSString *)title;
 
 @optional
-
 // 数据源对应的cell索引
 @property(nonatomic, copy) JDCellTypeBlock cellTypeBlock;
 // didSelectRowAtIndexPath

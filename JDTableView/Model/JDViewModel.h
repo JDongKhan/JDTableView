@@ -29,6 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 //在第section的区域插入sectionData数据
 - (void)insertSection:(NSUInteger)section sectionData:(id<JDSectionModelDataSource>)sectionData;
 
+/**
+  添加所有sections数据
+ */
+- (void)addAllSectionData:(NSArray<id<JDSectionModelDataSource>> *)sections;
+
 //增加sectionData 其rows数据需要自己指定
 - (void)addSectionData:(id<JDSectionModelDataSource>)sectionData;
 

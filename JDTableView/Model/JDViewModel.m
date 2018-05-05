@@ -39,6 +39,13 @@
     [_allDataArray insertObject:sectionData atIndex:section];
 }
 
+/**
+ 添加所有sections数据
+ */
+- (void)addAllSectionData:(NSArray<id<JDSectionModelDataSource>> *)sections {
+    [_allDataArray addObjectsFromArray:sections];
+}
+
 //增加sectionData 其rows数据需要自己指定
 - (void)addSectionData:(id<JDSectionModelDataSource>)sectionData {
     [_allDataArray addObject:sectionData];

@@ -19,7 +19,64 @@
 
 该方法支持在数据里面增加tableview的选择事件，默认的cell样式、accessoryView,block等等！
 
+## 使用就2步
+  第一步作配置表，比如配置cell的数组，数据对应的cell数组的索引。
+  第二步构造数据源，将它处取得数据交由JDViewModel来管理。
 
+如：
+
+```
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    //配置tableView
+    [self configTableView];
+    
+    //配置数据源
+    [self configDataSource];
+  }
+ 
+ 
+  - (void)configTableView {
+    JDTableViewConfig *config = [[JDTableViewConfig alloc] init];
+    config.tableViewCellArray = @[
+                                             [UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
+                                             [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
+                                             ];
+    config.tableViewHeaderViewArray = @[
+                                                   [FirstTableViewHeaderFooterView class]
+                                                   ];
+    config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
+        return 0;
+    };
+    //编辑
+    config.canEditable = ^BOOL(NSIndexPath *indexPath) {
+        return YES;
+    };
+
+    config.singleLineDeleteAction = ^(NSIndexPath *indexPath) {
+        NSLog(@"我要删除第%ld行",indexPath.row);
+    };
+    self.tableView.jd_config = config;
+  }
+
+  - (void)configDataSource {
+    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
+    self.tableView.jd_viewModel = self.tableViewModel;
+    
+    for (NSInteger i = 0; i < 4; i++) {
+        //开始组织对象
+        JDSectionModel *section = [[JDSectionModel alloc] init];
+        //section1.title = @"TableView";
+        section.sectionData = [NSString stringWithFormat:@"我是自定义数据%ld",i];
+        section.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
+            return [dataInfo[@"type"] integerValue];
+        };
+        NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
+        [section addRowDatasFromArray:data[@"items"]];
+        [self.tableViewModel addSectionData:section];
+    }
+  }
+```
 如果你有好的建议请联系我:419591321@qq.com,其实自己仔细琢磨更有意思！
 
  

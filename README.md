@@ -21,9 +21,13 @@
 
 ## 使用就2步
 
- >第一步作配置表，比如配置cell的数组，数据对应的cell数组的索引。
+ >第一步 设置委托类： self.tableView.jd_delegate = self;
  
- >第二步构造数据源，将它处取得数据交由JDViewModel来管理。
+ >第二步 设置数据源： self.tableView.jd_dataSource = self;
+ 
+ >第三步 作配置表，比如配置cell的数组，数据对应的cell数组的索引。
+
+ >第四部 构造数据源，将它处取得数据交由JDViewModel来管理。
 
 如：
 

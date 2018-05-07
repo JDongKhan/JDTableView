@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <JDTableView/JDViewModel.h>
+#import <JDTableView/JDTableView.h>
 
 @interface TableViewController : UIViewController
 

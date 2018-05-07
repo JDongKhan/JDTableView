@@ -8,11 +8,9 @@
 
 #import "Demo31ViewController.h"
 #import "Demo32ViewController.h"
-@import JDAutoLayout;
+#import "DataUtils.h"
 
-@interface Demo31ViewController ()<UITableViewDelegate,UITableViewDataSource>
-
-@property (nonatomic, strong) UITableView *tableView;
+@interface Demo31ViewController () <JDTableViewDelegate,JDTableViewDataSource>
 
 @end
 
@@ -20,47 +18,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self.view addSubview:self.tableView];
-    self.tableView.jd_insets(UIEdgeInsetsZero).jd_layout();
+    //配置tableView
+    [self configTableView];
+    //配置数据源
+    [self configDataSource];
     // Do any additional setup after loading the view.
 }
+
+
+- (void)configTableView {
+    __weak Demo31ViewController *weakSelf = self;
+    JDTableViewConfig *config = [[JDTableViewConfig alloc] init];
+    //配置都有哪些cells
+    config.tableViewCellArray = @[[UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
+                                  [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]];
+    //配置数据源与cell的对应关系
+    config.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
+        return 0;
+    };
+    config.didSelectCellBlock = ^(NSIndexPath *indexPath, id dataInfo) {
+         [weakSelf.navigationController pushViewController:[[Demo32ViewController alloc] init] animated:YES];
+    };
+    /////////////////以下是编辑功能，可以不看/////////////////////////
+    config.supportHeightCache = YES;
+    self.tableView.jd_config = config;
+}
+
+- (void)configDataSource {
+    for (NSInteger i = 0; i < 4; i++) {
+        //开始组织对象
+        JDSectionModel *section = [[JDSectionModel alloc] init];
+        //section1.title = @"TableView";
+        section.sectionData = [NSString stringWithFormat:@"我是自定义数据%ld",i];
+        //section也可以配置数据源与cell的对应关系，它的优先级高于config的配置
+        section.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
+            return [dataInfo[@"type"] integerValue];
+        };
+        NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
+        [section addRowDatasFromArray:data[@"items"]];
+        [self.tableViewModel addSectionData:section];
+    }
+    [self.tableView reloadData];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (UITableView *)tableView {
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] init];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-    return _tableView;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELLID"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CELLID"];
-    }
-    cell.textLabel.text = @"1001";
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.navigationController pushViewController:[[Demo32ViewController alloc] init] animated:YES];
 }
 /*
 #pragma mark - Navigation

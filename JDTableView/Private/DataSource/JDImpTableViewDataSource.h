@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UITableView.h>
+#import "JDTableViewDataSource.h"
 
-
-@interface JDImpTableViewDataSource : NSObject<UITableViewDataSource>
+@interface JDImpTableViewDataSource : NSObject<JDTableViewDataSource>
 
 @end

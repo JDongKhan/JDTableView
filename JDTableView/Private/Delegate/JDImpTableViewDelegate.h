@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UITableView.h>
+#import "JDTableViewDelegate.h"
 
-
-@interface JDImpTableViewDelegate : NSObject<UITableViewDelegate>
+@interface JDImpTableViewDelegate : NSObject<JDTableViewDelegate>
 
 @end

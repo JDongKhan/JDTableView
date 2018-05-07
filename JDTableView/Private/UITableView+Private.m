@@ -9,8 +9,8 @@
 #import "UITableView+Private.h"
 #import "UITableView+JDExtension.h"
 #import <objc/runtime.h>
-#import "JDTableViewDelegate.h"
-#import "JDTableViewDataSource.h"
+#import "JDImpTableViewDelegate.h"
+#import "JDImpTableViewDataSource.h"
 
 
 NSString *const _cellID = @"tableViewCellID";
@@ -59,7 +59,7 @@ NSString *jd_tableView_header_cellID(NSUInteger type) {
         @selector(tableView:commitEditingStyle:forRowAtIndexPath:),
         @selector(tableView:canMoveRowAtIndexPath:)
     };
-    tableView_addMethod(selectors,sizeof(selectors)/sizeof(SEL), [dataSource class],[JDTableViewDataSource class]);
+    tableView_addMethod(selectors,sizeof(selectors)/sizeof(SEL), [dataSource class],[JDImpTableViewDataSource class]);
 }
 
 - (void)impDelegate:(id)delegate {
@@ -82,7 +82,7 @@ NSString *jd_tableView_header_cellID(NSUInteger type) {
     if (self.rowHeight > 0) {
         selectors[0] = NULL;
     }
-    tableView_addMethod(selectors,sizeof(selectors)/sizeof(SEL), [delegate class],[JDTableViewDelegate class]);
+    tableView_addMethod(selectors,sizeof(selectors)/sizeof(SEL), [delegate class],[JDImpTableViewDelegate class]);
 }
 
 void tableView_addMethod(SEL *selectors,int count, Class toClass, Class impClass){

@@ -11,7 +11,7 @@
 #import <JDTableView/JDSectionModel.h>
 #import <JDTableView/UITableView+JDExtension.h>
 
-@interface ViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface ViewController () <JDTableViewDelegate,JDTableViewDataSource>
 
 @end
 

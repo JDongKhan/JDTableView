@@ -20,16 +20,6 @@
     return self;
 }
 
-- (instancetype)initWithDelegate:(id)delegate dataSource:(id)dataSource {
-    if (self = [super init]) {
-        _allDataArray = [NSMutableArray array];
-        _delegate = delegate;
-        _dataSource = dataSource;
-    }
-    return self;
-}
-
-
 - (void)clear {
     [_allDataArray removeAllObjects];
 }

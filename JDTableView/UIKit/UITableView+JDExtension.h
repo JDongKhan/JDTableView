@@ -9,18 +9,30 @@
 #import <UIKit/UIKit.h>
 #import "JDTableViewConfig.h"
 #import "JDViewModel.h"
+#import "JDTableViewDataSource.h"
+#import "JDTableViewDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (JDExtension)
 
 /**
+ 委托类
+ */
+@property (nonatomic, weak) id<JDTableViewDelegate> jd_delegate;
+
+/**
  数据源
+ */
+@property (nonatomic, weak) id<JDTableViewDataSource> jd_dataSource;
+
+/**
+ 数据源加工厂
  */
 @property (nonatomic, strong) JDViewModel *jd_viewModel;
 
 /**
- 配置
+ 配置类
  */
 @property (nonatomic, strong) JDTableViewConfig *jd_config;
 
@@ -28,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
  根据indexPath获取type
  */
 - (NSUInteger)jd_typeForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 
 @end
 

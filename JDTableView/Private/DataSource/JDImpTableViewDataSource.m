@@ -1,18 +1,18 @@
 //
-//  JDTableViewDataSource.m
+//  JDImpTableViewDataSource.m
 //  JDTableView
 //
 //  Created by 王金东 on 2016/8/3.
 //  Copyright © 2016年 王金东. All rights reserved.
 //
 
-#import "JDTableViewDataSource.h"
+#import "JDImpTableViewDataSource.h"
 #import "UITableView+JDExtension.h"
 #import "JDViewModel.h"
 #import "UITableViewCell+JDExtension.h"
 #import "UITableView+Private.h"
 
-@implementation JDTableViewDataSource
+@implementation JDImpTableViewDataSource
 
 #pragma mark - UITableView DataSource
 //分组数量

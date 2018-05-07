@@ -14,25 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JDViewModel : NSObject
 
 /**
- 就是你想使用tableView 委托
- */
-@property (nonatomic, weak) id delegate;
-
-/**
-  就是你想使用tableView 数据源
- */
-@property (nonatomic, weak) id dataSource;
-
-/**
- 一定要用此方法初始化
-
- @param delegate 委托类
- @param dataSource 数据源
- @return 当前类的实例
- */
-- (instancetype)initWithDelegate:(id)delegate dataSource:(id)dataSource;
-
-/**
   tableView右边的IndexTitles数据源
  */
 @property (nonatomic, strong) NSArray *sectionIndexTitles;

@@ -1,5 +1,5 @@
 //
-//  JDTableViewDataSource.h
+//  JDImpTableViewDelegate.h
 //  JDTableView
 //
 //  Created by 王金东 on 2016/8/3.
@@ -10,6 +10,6 @@
 #import <UIKit/UITableView.h>
 
 
-@interface JDTableViewDataSource : NSObject<UITableViewDataSource>
+@interface JDImpTableViewDelegate : NSObject<UITableViewDelegate>
 
 @end

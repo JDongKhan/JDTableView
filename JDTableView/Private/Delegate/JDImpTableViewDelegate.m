@@ -1,12 +1,12 @@
 //
-//  JDTableViewDelegate.m
+//  JDImpTableViewDelegate.m
 //  JDTableView
 //
 //  Created by 王金东 on 2016/8/3.
 //  Copyright © 2016年 王金东. All rights reserved.
 //
 
-#import "JDTableViewDelegate.h"
+#import "JDImpTableViewDelegate.h"
 #import "JDBlockDescription.h"
 #import "UITableViewCell+JDExtension.h"
 #import "JDViewModel.h"
@@ -16,7 +16,7 @@
 #import "UITableView+JDIndexPathHeightCache.h"
 #import "UITableViewHeaderFooterView+JDExtension.h"
 
-@implementation JDTableViewDelegate
+@implementation JDImpTableViewDelegate
 
 + (void)deselect:(UITableView *)tableView{
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
@@ -40,7 +40,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //点击过去就会帮你取消点击后的效果
     if (tableView.jd_config.clearSelectionDelay) {
-        [JDTableViewDelegate performSelector:@selector(deselect:) withObject:tableView afterDelay:0.5f];
+        [JDImpTableViewDelegate performSelector:@selector(deselect:) withObject:tableView afterDelay:0.5f];
     }
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
     //好吧，你最大，你先处理
@@ -97,7 +97,7 @@
         //生成cellid
         NSUInteger type = [tableView jd_typeForRowAtIndexPath:indexPath];
         NSString *cellID = jd_tableView_cellID(type);
-        cell = [JDTableViewDelegate tableView:tableView templateCellForReuseIdentifier:cellID delegate:tableView.delegate];
+        cell = [JDImpTableViewDelegate tableView:tableView templateCellForReuseIdentifier:cellID delegate:tableView.delegate];
         if (cell != nil) {
             cell.jd_indexPath = indexPath;
             //我是来判断是否缓存了高度
@@ -137,7 +137,7 @@
     }
     if (type >= 0) {
         NSString *headerID = jd_tableView_header_cellID(type);
-        UITableViewHeaderFooterView *headerView = [JDTableViewDelegate tableView:tableView templateHeaderViewForReuseIdentifier:headerID delegate:tableView.delegate];
+        UITableViewHeaderFooterView *headerView = [JDImpTableViewDelegate tableView:tableView templateHeaderViewForReuseIdentifier:headerID delegate:tableView.delegate];
         height = [headerView jd_tableView:tableView sectionInfo:sectionInfo];
     }
     return height;

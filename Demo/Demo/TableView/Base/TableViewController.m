@@ -11,7 +11,7 @@
 @import JDAutoLayout;
 
 
-@interface TableViewController ()
+@interface TableViewController () <JDTableViewDelegate,JDTableViewDataSource>
 
 @end
 
@@ -24,11 +24,12 @@
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
-    
+    self.tableView.jd_delegate = self;
+    self.tableView.jd_dataSource = self;
     [self.view addSubview:self.tableView];
     self.tableView.jd_insets(UIEdgeInsetsZero).jd_layout();
-    
-    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
+
+    self.tableViewModel = [[JDViewModel alloc] init];
     self.tableView.jd_viewModel = self.tableViewModel;
     
     // Do any additional setup after loading the view.

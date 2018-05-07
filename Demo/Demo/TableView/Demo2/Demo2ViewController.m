@@ -41,9 +41,6 @@
 
 //读取数据源
 - (void)configDataSource {
-    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
-    self.tableView.jd_viewModel = self.tableViewModel;
-    
     NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
     [self.tableViewModel addSectionDataWithArray:data[@"items"]];
 }

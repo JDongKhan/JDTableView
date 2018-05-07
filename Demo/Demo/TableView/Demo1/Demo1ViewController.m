@@ -37,12 +37,12 @@
     //配置都有哪些cells
     config.tableViewCellArray = @[[UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
                                   [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]];
-    //配置都有哪些header
-    config.tableViewHeaderViewArray = @[[FirstTableViewHeaderFooterView class]];
     //配置数据源与cell的对应关系
     config.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
         return 0;
     };
+    //配置都有哪些header
+    config.tableViewHeaderViewArray = @[[FirstTableViewHeaderFooterView class]];
     //配置数据源与header的对应关系
     config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
         return 0;

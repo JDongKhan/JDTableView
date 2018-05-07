@@ -8,6 +8,7 @@
 
 #import "Demo31ViewController.h"
 #import "Demo32ViewController.h"
+#import "FirstTableViewHeaderFooterView.h"
 #import "DataUtils.h"
 
 @interface Demo31ViewController () <JDTableViewDelegate,JDTableViewDataSource>
@@ -36,6 +37,12 @@
     config.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
         return 0;
     };
+    //配置都有哪些header
+    config.tableViewHeaderViewArray = @[[FirstTableViewHeaderFooterView class]];
+    //配置数据源与header的对应关系
+    config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
+        return 0;
+    };
     config.didSelectCellBlock = ^(NSIndexPath *indexPath, id dataInfo) {
          [weakSelf.navigationController pushViewController:[[Demo32ViewController alloc] init] animated:YES];
     };
@@ -45,17 +52,18 @@
 }
 
 - (void)configDataSource {
-    for (NSInteger i = 0; i < 4; i++) {
+    NSArray *data = [DataUtils dataFromJsonFile:@"second.json"];
+    
+    for (NSInteger i = 0; i < data.count; i++) {
         //开始组织对象
         JDSectionModel *section = [[JDSectionModel alloc] init];
         //section1.title = @"TableView";
-        section.sectionData = [NSString stringWithFormat:@"我是自定义数据%ld",i];
+        section.sectionData = data[i];
         //section也可以配置数据源与cell的对应关系，它的优先级高于config的配置
         section.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
             return [dataInfo[@"type"] integerValue];
         };
-        NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
-        [section addRowDatasFromArray:data[@"items"]];
+        [section addRowDatasFromArray:data[i][@"items"]];
         [self.tableViewModel addSectionData:section];
     }
     [self.tableView reloadData];

@@ -19,23 +19,47 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="131.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head" translatesAutoresizingMaskIntoConstraints="NO" id="07b-jj-Bpn">
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="698-OT-mtu"/>
+                            <constraint firstAttribute="width" constant="50" id="ead-YK-Pqf"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ao1-Jk-Kre">
-                        <rect key="frame" x="242" y="31" width="42" height="21"/>
+                        <rect key="frame" x="70" y="31" width="214" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9he-fO-yzE">
+                        <rect key="frame" x="26" y="70" width="268" height="41"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" red="0.90860625544391427" green="0.85810711488976987" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
+                    <constraint firstItem="Ao1-Jk-Kre" firstAttribute="leading" secondItem="07b-jj-Bpn" secondAttribute="trailing" constant="10" id="6o2-Ue-aHM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="9he-fO-yzE" secondAttribute="trailing" constant="10" id="7L3-hj-JR5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="9he-fO-yzE" secondAttribute="bottom" constant="10" id="FMe-Q9-Dso"/>
+                    <constraint firstItem="07b-jj-Bpn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="FiI-Cy-tiA"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Ao1-Jk-Kre" secondAttribute="trailing" constant="20" id="Q5V-e9-NKa"/>
+                    <constraint firstItem="07b-jj-Bpn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TOv-8u-Bjt"/>
+                    <constraint firstItem="9he-fO-yzE" firstAttribute="top" secondItem="07b-jj-Bpn" secondAttribute="bottom" constant="10" id="dYP-oj-GEX"/>
+                    <constraint firstItem="9he-fO-yzE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="fLZ-A6-WXf"/>
                     <constraint firstItem="Ao1-Jk-Kre" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="h6R-nm-2Li"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="_desLabel" destination="9he-fO-yzE" id="tW9-VT-SMN"/>
                 <outlet property="_testLabel" destination="Ao1-Jk-Kre" id="NJs-By-gze"/>
             </connections>
             <point key="canvasLocation" x="25" y="8"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="head" width="30" height="30"/>
+    </resources>
 </document>

@@ -259,8 +259,8 @@
 			children = (
 				69EDF95C209C5C8B00A18721 /* first.json */,
 				69EDF95D209C5C8B00A18721 /* second.json */,
-				69EDF95E209C5C8B00A18721 /* DataUtils.m */,
 				69EDF95F209C5C8B00A18721 /* DataUtils.h */,
+				69EDF95E209C5C8B00A18721 /* DataUtils.m */,
 			);
 			path = data;
 			sourceTree = "<group>";

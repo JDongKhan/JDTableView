@@ -17,11 +17,11 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (nil != self) {
-        self.contentView.backgroundColor = [UIColor grayColor];
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 8, 175, 23)];
+        self.contentView.backgroundColor = [UIColor redColor];
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 12, 175, 23)];
         textLabel.textAlignment = NSTextAlignmentLeft;
         textLabel.font = [UIFont systemFontOfSize:16];
-        textLabel.textColor = [UIColor redColor];
+        textLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:textLabel];
         _textLabel = textLabel;
     }
@@ -29,8 +29,12 @@
 }
 
 - (void)jd_render:(JDSectionModel *)sectionInfo {
-    NSString *title = sectionInfo.sectionData;
-    _textLabel.text = title;
+    if ([sectionInfo.sectionData isKindOfClass:[NSString class]]) {
+        NSString *title = sectionInfo.sectionData;
+        _textLabel.text = title;
+    } else {
+        _textLabel.text = sectionInfo.sectionData[@"title"];
+    }
 }
 
 - (CGFloat)jd_tableView:(UITableView *)tableView sectionInfo:(id)sectionInfo {

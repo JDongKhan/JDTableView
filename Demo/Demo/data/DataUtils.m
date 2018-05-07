@@ -13,7 +13,9 @@
 
 + (id)dataFromJsonFile:(NSString *)jsonFile {
     NSURL *url = [[NSBundle mainBundle] URLForResource:[jsonFile stringByDeletingPathExtension] withExtension:[jsonFile pathExtension]];
-    return  [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:url] options:kNilOptions error:nil];
+    NSError *error;
+    id content =  [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:url] options:kNilOptions error:&error];
+    return content;
 }
 
 @end

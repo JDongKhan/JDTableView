@@ -1,12 +1,10 @@
 # JDTableView
 
-对tableview的拓展，利用runtime的class_addMethod动态实现datasource和delegate方法，不用实现一个方法即可展示数据，当然你可以根据自己的喜好来实现也行！
+>IOS项目用的最多的控件中tableview恐怕是有着举足轻重位置，可是你如果还在自己实现tableview的delegate和datasource恐怕就low了，尤其是delegate和datasource逻辑大同小异，而本项目就是针对一个数组来抽象实现掉delegate和datasource，甚至完全靠一个数组源都能全部处理掉tableview的渲染和事件处理。
+这种写法也能帮开发者只关注数据和界面，不需要考虑tableview的渲染逻辑
 
 
- >IOS项目用的最多的控件中tableview恐怕是有着举足轻重位置，可是你如果还在自己实现tableview的delegate和datasource恐怕就low了，尤其是delegate和datasource逻辑大同小异，而本项目就是针对一个数组来分析实现掉delegate和datasource，甚至完全靠一个数组源都能全部处理掉tableview的渲染和事件处理。
- 
- 这种写法也能帮开发者只关注数据和界面，不需要考虑tableview的渲染逻辑
-
+对tableview的拓展，利用runtime的class_addMethod向delegate和dataSource动态添加实现协议方法，不用实现一个方法即可展示数据，因为动态添加前会判断delegate和dataSource里面是否已有该方法，所以你可以根据自己的喜好来先行实现！
 
 # -------惯例先上图，图丑但是它不是重点------
 此效果图的实现可看代码，及其简单，不用实现一行协议代码

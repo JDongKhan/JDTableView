@@ -52,6 +52,7 @@
     config.canEditable = ^BOOL(NSIndexPath *indexPath,id dataInfo) {
         return YES;
     };
+    config.supportHeightCache = YES;
     //设置单行删除回调
     config.singleLineDeleteAction = ^(NSIndexPath *indexPath) {
         NSLog(@"我要删除第%ld行",indexPath.row);

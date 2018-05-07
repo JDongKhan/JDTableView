@@ -85,6 +85,12 @@
 
 //cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //我是来判断是否缓存了高度
+    //缓存用的是UITableView+UITableView+FDIndexPathHeightCache,
+    //当然感谢作者帮我们做了这个，不然还要自己写缓存 /(ㄒoㄒ)/~~
+    if (tableView.jd_config.supportHeightCache && [tableView.indexPathHeightCache existsHeightAtIndexPath:indexPath]) {
+        return [tableView.indexPathHeightCache heightForIndexPath:indexPath];
+    }
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
     //NSLog(@"计算第%d块，第%d行行高",indexPath.section,indexPath.row);
     //自己计算高度
@@ -100,12 +106,6 @@
         cell = [JDImpTableViewDelegate tableView:tableView templateCellForReuseIdentifier:cellID delegate:tableView.delegate];
         if (cell != nil) {
             cell.jd_indexPath = indexPath;
-            //我是来判断是否缓存了高度
-            //缓存用的是UITableView+UITableView+FDIndexPathHeightCache,
-            //当然感谢作者帮我们做了这个，不然还要自己写缓存 /(ㄒoㄒ)/~~
-            if (tableView.jd_config.supportHeightCache && [tableView.indexPathHeightCache existsHeightAtIndexPath:indexPath]) {
-                return [tableView.indexPathHeightCache heightForIndexPath:indexPath];
-            }
             //给cell的dataInfo赋值,并计算高度
             CGFloat height =  [cell jd_tableView:tableView cellInfo:dataInfo];
             if (tableView.jd_config.supportHeightCache) {

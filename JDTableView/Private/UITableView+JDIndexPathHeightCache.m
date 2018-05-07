@@ -131,25 +131,25 @@ static void __SPT_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 
 + (void)load {
     // All methods that trigger height cache's invalidation
-//    SEL selectors[] = {
-//        @selector(reloadData),
-//        @selector(insertSections:withRowAnimation:),
-//        @selector(deleteSections:withRowAnimation:),
-//        @selector(reloadSections:withRowAnimation:),
-//        @selector(moveSection:toSection:),
-//        @selector(insertRowsAtIndexPaths:withRowAnimation:),
-//        @selector(deleteRowsAtIndexPaths:withRowAnimation:),
-//        @selector(reloadRowsAtIndexPaths:withRowAnimation:),
-//        @selector(moveRowAtIndexPath:toIndexPath:)
-//    };
-//    
-//    for (NSUInteger index = 0; index < sizeof(selectors) / sizeof(SEL); ++index) {
-//        SEL originalSelector = selectors[index];
-//        SEL swizzledSelector = NSSelectorFromString([@"spt_" stringByAppendingString:NSStringFromSelector(originalSelector)]);
-//        Method originalMethod = class_getInstanceMethod(self, originalSelector);
-//        Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
-//        method_exchangeImplementations(originalMethod, swizzledMethod);
-//    }
+    SEL selectors[] = {
+        @selector(reloadData),
+        @selector(insertSections:withRowAnimation:),
+        @selector(deleteSections:withRowAnimation:),
+        @selector(reloadSections:withRowAnimation:),
+        @selector(moveSection:toSection:),
+        @selector(insertRowsAtIndexPaths:withRowAnimation:),
+        @selector(deleteRowsAtIndexPaths:withRowAnimation:),
+        @selector(reloadRowsAtIndexPaths:withRowAnimation:),
+        @selector(moveRowAtIndexPath:toIndexPath:)
+    };
+    
+    for (NSUInteger index = 0; index < sizeof(selectors) / sizeof(SEL); ++index) {
+        SEL originalSelector = selectors[index];
+        SEL swizzledSelector = NSSelectorFromString([@"spt_" stringByAppendingString:NSStringFromSelector(originalSelector)]);
+        Method originalMethod = class_getInstanceMethod(self, originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
 }
 
 - (void)spt_reloadData {

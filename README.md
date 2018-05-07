@@ -30,10 +30,13 @@
 ```
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //配置tableView
+    //第一步：设置委托类
+    self.tableView.jd_delegate = self;
+    //第二步：设置数据源
+    self.tableView.jd_dataSource = self;
+    //第三步：配置tableView
     [self configTableView];
-    
-    //配置数据源
+    //第四部：加工数据源
     [self configDataSource];
   }
  
@@ -62,7 +65,7 @@
   }
 
   - (void)configDataSource {
-    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
+    self.tableViewModel = [[JDViewModel alloc] init];
     self.tableView.jd_viewModel = self.tableViewModel;
     
     for (NSInteger i = 0; i < 4; i++) {

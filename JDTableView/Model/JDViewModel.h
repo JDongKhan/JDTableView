@@ -93,6 +93,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeRowDataAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removeRowData:(id)rowData section:(NSUInteger)section;
 
+/**
+ 移除所有数据
+ */
+- (void)removeAllDatas;
+
 @end
 
 

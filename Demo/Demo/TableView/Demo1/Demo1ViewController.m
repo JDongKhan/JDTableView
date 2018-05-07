@@ -11,7 +11,6 @@
 #import "FirstTableViewHeaderFooterView.h"
 #import <JDTableView/JDSectionModel.h>
 #import <JDTableView/UITableView+JDExtension.h>
-@import JDAutoLayout;
 
 @interface Demo1ViewController ()
 
@@ -21,16 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editAction:)];
-    
-    [self.view addSubview:self.tableView];
-    self.tableView.jd_insets(UIEdgeInsetsZero).jd_layout();
-    
     //配置tableView
     [self configTableView];
-    
     //配置数据源
     [self configDataSource];
     // Do any additional setup after loading the view.
@@ -42,21 +34,25 @@
 
 - (void)configTableView {
     JDTableViewConfig *config = [[JDTableViewConfig alloc] init];
-    config.tableViewCellArray = @[
-                                             [UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
-                                             [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
-                                             ];
-    config.tableViewHeaderViewArray = @[
-                                                   [FirstTableViewHeaderFooterView class]
-                                                   ];
+    //配置都有哪些cells
+    config.tableViewCellArray = @[[UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
+                                  [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]];
+    //配置都有哪些header
+    config.tableViewHeaderViewArray = @[[FirstTableViewHeaderFooterView class]];
+    //配置数据源与cell的对应关系
+    config.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
+        return 0;
+    };
+    //配置数据源与header的对应关系
     config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
         return 0;
     };
-    //编辑
-    config.canEditable = ^BOOL(NSIndexPath *indexPath) {
+    /////////////////以下是编辑功能，可以不看/////////////////////////
+    //配置indexPath下的数据源是否有编辑能力
+    config.canEditable = ^BOOL(NSIndexPath *indexPath,id dataInfo) {
         return YES;
     };
-
+    //设置单行删除回调
     config.singleLineDeleteAction = ^(NSIndexPath *indexPath) {
         NSLog(@"我要删除第%ld行",indexPath.row);
     };
@@ -64,14 +60,12 @@
 }
 
 - (void)configDataSource {
-    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
-    self.tableView.jd_viewModel = self.tableViewModel;
-    
     for (NSInteger i = 0; i < 4; i++) {
         //开始组织对象
         JDSectionModel *section = [[JDSectionModel alloc] init];
         //section1.title = @"TableView";
         section.sectionData = [NSString stringWithFormat:@"我是自定义数据%ld",i];
+        //section也可以配置数据源与cell的对应关系，它的优先级高于config的配置
         section.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
             return [dataInfo[@"type"] integerValue];
         };
@@ -79,6 +73,7 @@
         [section addRowDatasFromArray:data[@"items"]];
         [self.tableViewModel addSectionData:section];
     }
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,13 +81,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UITableView *)tableView {
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] init];
-        
-    }
-    return _tableView;
-}
+
 /*
 #pragma mark - Navigation
 

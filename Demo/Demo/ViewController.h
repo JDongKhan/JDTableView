@@ -6,9 +6,9 @@
 //  Copyright © 2018年 JD. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TableViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : TableViewController
 
 
 @end

@@ -76,7 +76,8 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     //依然你最大，你来决定是否能编辑
     if (tableView.jd_config.canEditable) {
-        return tableView.jd_config.canEditable(indexPath);
+        id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
+        return tableView.jd_config.canEditable(indexPath,dataInfo);
     }
     return tableView.jd_config.editable;
 }

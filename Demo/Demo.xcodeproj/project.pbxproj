@@ -26,6 +26,7 @@
 		69CF92E520687F9400A389B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92E420687F9400A389B5 /* main.m */; };
 		69CF92EF20687F9400A389B5 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92EE20687F9400A389B5 /* DemoTests.m */; };
 		69CF92FA20687F9400A389B5 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF92F920687F9400A389B5 /* DemoUITests.m */; };
+		69D1CD18209FDC9E00E86085 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1CD17209FDC9E00E86085 /* TableViewController.m */; };
 		69EDF960209C5C8B00A18721 /* first.json in Resources */ = {isa = PBXBuildFile; fileRef = 69EDF95C209C5C8B00A18721 /* first.json */; };
 		69EDF961209C5C8B00A18721 /* second.json in Resources */ = {isa = PBXBuildFile; fileRef = 69EDF95D209C5C8B00A18721 /* second.json */; };
 		69EDF962209C5C8B00A18721 /* DataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EDF95E209C5C8B00A18721 /* DataUtils.m */; };
@@ -84,6 +85,8 @@
 		69CF92F520687F9400A389B5 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CF92F920687F9400A389B5 /* DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoUITests.m; sourceTree = "<group>"; };
 		69CF92FB20687F9400A389B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69D1CD16209FDC9E00E86085 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		69D1CD17209FDC9E00E86085 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		69EDF95C209C5C8B00A18721 /* first.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = first.json; sourceTree = "<group>"; };
 		69EDF95D209C5C8B00A18721 /* second.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = second.json; sourceTree = "<group>"; };
 		69EDF95E209C5C8B00A18721 /* DataUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtils.m; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		696C4A6B20897526001EC7EA /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				69D1CD15209FDC8B00E86085 /* Base */,
 				696C4A9420898C30001EC7EA /* Demo3 */,
 				696C4A8120898472001EC7EA /* cell */,
 				696C4A8B20898472001EC7EA /* Demo1 */,
@@ -239,6 +243,15 @@
 				69CF92FB20687F9400A389B5 /* Info.plist */,
 			);
 			path = DemoUITests;
+			sourceTree = "<group>";
+		};
+		69D1CD15209FDC8B00E86085 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				69D1CD16209FDC9E00E86085 /* TableViewController.h */,
+				69D1CD17209FDC9E00E86085 /* TableViewController.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		69EDF95B209C5C8B00A18721 /* data */ = {
@@ -449,6 +462,7 @@
 				69CF92D720687F9400A389B5 /* AppDelegate.m in Sources */,
 				69EDF962209C5C8B00A18721 /* DataUtils.m in Sources */,
 				696C4A8E20898472001EC7EA /* DemoTableViewCell1.m in Sources */,
+				69D1CD18209FDC9E00E86085 /* TableViewController.m in Sources */,
 				696C4A9320898472001EC7EA /* Demo1ViewController.m in Sources */,
 				696C4A9A20898C6C001EC7EA /* Demo32ViewController.m in Sources */,
 				696C4A9220898472001EC7EA /* Demo2ViewController.m in Sources */,

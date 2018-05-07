@@ -18,6 +18,8 @@
  */
 - (void)setJd_viewModel:(JDViewModel *)jd_viewModel {
     objc_setAssociatedObject(self, @selector(jd_viewModel), jd_viewModel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    NSAssert(jd_viewModel.delegate, @"delegate为空");
+    NSAssert(jd_viewModel.dataSource, @"dataSource为空");
     //动态的给viewModel里面的delegate和dataSource添加委托实现方法
     [self jd_dynamicDelegate:jd_viewModel.delegate];
     [self jd_dynamicDataSource:jd_viewModel.dataSource];

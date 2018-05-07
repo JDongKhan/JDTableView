@@ -63,8 +63,7 @@ typedef void(^JDMultiLineDeleteAction) (NSArray *indexPaths);
  @param indexPath 行数信息
  @return 行对应的编辑能力，YES：能编辑，NO：不能编辑
  */
-typedef BOOL(^JDCanEditable) (NSIndexPath *indexPath);
-
+typedef BOOL(^JDCanEditable) (NSIndexPath *indexPath, id dataInfo);
 
 
 @interface JDTableViewConfig : NSObject

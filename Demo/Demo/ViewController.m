@@ -11,11 +11,7 @@
 #import <JDTableView/JDSectionModel.h>
 #import <JDTableView/UITableView+JDExtension.h>
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
-
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
-
-@property (nonatomic, strong) JDViewModel *tableViewModel;
+@interface ViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -23,12 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.estimatedRowHeight = 0;
-    self.tableView.estimatedSectionHeaderHeight = 0;
-    self.tableView.estimatedSectionFooterHeight = 0;
-    
-    self.tableViewModel = [[JDViewModel alloc] initWithDelegate:self dataSource:self];
-    self.tableView.jd_viewModel = self.tableViewModel;
+    [self configDataSource];
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)configDataSource {
     
     JDSectionModel *section1 = [[JDSectionModel alloc] init];
     section1.title = @"TableView";
@@ -52,16 +47,15 @@
                                      ]];
     [self.tableViewModel addSectionData:section1];
     
-    
     JDSectionModel *section2 = [[JDSectionModel alloc] init];
     section2.title = @"CollectionView";
     JDRowModel *row1 = [[JDRowModel alloc] init];
     row1.title = @"Demo1";
     [section2 addRowDatasFromArray:@[
-                                        row1
-                                        ]];
+                                     row1
+                                     ]];
     [self.tableViewModel addSectionData:section2];
-    // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

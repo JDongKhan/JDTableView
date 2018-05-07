@@ -6,13 +6,9 @@
 //  Copyright © 2018年 JD. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <JDTableView/JDViewModel.h>
+#import "TableViewController.h"
 
-@interface Demo1ViewController : UIViewController
+@interface Demo1ViewController : TableViewController
 
-@property (nonatomic, strong) UITableView *tableView;
-
-@property (nonatomic, strong) JDViewModel *tableViewModel;
 
 @end

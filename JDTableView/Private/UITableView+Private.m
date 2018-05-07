@@ -22,7 +22,7 @@ NSString *jd_tableView_cellID(NSUInteger type) {
 }
 
 NSString *jd_tableView_header_cellID(NSUInteger type) {
-    return [_cellID stringByAppendingFormat:@"_%ld",(long)type];
+    return [_headerViewID stringByAppendingFormat:@"_%ld",(long)type];
 }
 
 @implementation UITableView (Private)

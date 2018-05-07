@@ -91,6 +91,9 @@
     [itemArray removeObject:rowData];
 }
 
+- (void)removeAllDatas {
+    [_allDataArray removeAllObjects];
+}
 
 @end
 

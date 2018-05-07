@@ -42,7 +42,6 @@ typedef void (^JDTableViewCellLoadBlock)(UITableViewCell *cell,NSIndexPath *inde
 
 #pragma mark ----------编辑功能---------------
 
-
 /**
  单选行删除block
 

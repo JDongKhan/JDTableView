@@ -45,17 +45,22 @@
  
   - (void)configTableView {
     JDTableViewConfig *config = [[JDTableViewConfig alloc] init];
-    config.tableViewCellArray = @[
-                                             [UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
-                                             [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
-                                             ];
-    config.tableViewHeaderViewArray = @[
-                                                   [FirstTableViewHeaderFooterView class]
-                                                   ];
+    config.tableViewCellArray = @[[UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
+                                  [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
+                                ];
+   //配置数据源与cell的对应关系
+    config.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
+        return 0;
+    };
+    
+    //配置都有哪些header
+    config.tableViewHeaderViewArray = @[[FirstTableViewHeaderFooterView class]];
+    //配置数据源与header的对应关系
     config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
         return 0;
     };
-    //编辑
+    
+    ////////////////////////编辑////////////////////////
     config.canEditable = ^BOOL(NSIndexPath *indexPath) {
         return YES;
     };
@@ -75,6 +80,7 @@
         JDSectionModel *section = [[JDSectionModel alloc] init];
         //section1.title = @"TableView";
         section.sectionData = [NSString stringWithFormat:@"我是自定义数据%ld",i];
+        //section也可以配置数据源与cell的对应关系，它的优先级高于config的配置
         section.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
             return [dataInfo[@"type"] integerValue];
         };

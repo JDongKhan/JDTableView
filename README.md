@@ -7,7 +7,7 @@
 对tableview的拓展，利用runtime的class_addMethod向delegate和dataSource动态添加实现协议方法，不用实现一个方法即可展示数据，因为动态添加前会判断delegate和dataSource里面是否已有该方法，所以你可以根据自己的喜好来先行实现！
 
 # -------惯例先上图，图丑但是它不是重点------
-此效果图的实现可看代码，及其简单，不用实现一行协议代码
+此效果图的实现可看代码，极其简单，不用实现一行协议代码
 
 ![](https://github.com/wangjindong/JDTableView/blob/master/tableview.gif)
 
@@ -45,17 +45,22 @@
  
   - (void)configTableView {
     JDTableViewConfig *config = [[JDTableViewConfig alloc] init];
-    config.tableViewCellArray = @[
-                                             [UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
-                                             [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
-                                             ];
-    config.tableViewHeaderViewArray = @[
-                                                   [FirstTableViewHeaderFooterView class]
-                                                   ];
+    config.tableViewCellArray = @[[UINib nibWithNibName:@"DemoTableViewCell1" bundle:nil],
+                                  [UINib nibWithNibName:@"DemoTableViewCell2" bundle:nil]
+                                ];
+   //配置数据源与cell的对应关系
+    config.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
+        return 0;
+    };
+    
+    //配置都有哪些header
+    config.tableViewHeaderViewArray = @[[FirstTableViewHeaderFooterView class]];
+    //配置数据源与header的对应关系
     config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
         return 0;
     };
-    //编辑
+    
+    ////////////////////////编辑////////////////////////
     config.canEditable = ^BOOL(NSIndexPath *indexPath) {
         return YES;
     };
@@ -75,6 +80,7 @@
         JDSectionModel *section = [[JDSectionModel alloc] init];
         //section1.title = @"TableView";
         section.sectionData = [NSString stringWithFormat:@"我是自定义数据%ld",i];
+        //section也可以配置数据源与cell的对应关系，它的优先级高于config的配置
         section.cellTypeBlock = ^NSInteger(NSIndexPath *indexPath, id dataInfo) {
             return [dataInfo[@"type"] integerValue];
         };

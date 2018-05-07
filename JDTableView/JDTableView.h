@@ -13,5 +13,7 @@
 #import <JDTableView/JDSectionModel.h>
 #import <JDTableView/UITableViewCell+JDExtension.h>
 #import <JDTableView/UITableViewHeaderFooterView+JDExtension.h>
+#import <JDTableView/JDTableViewDataSource.h>
+#import <JDTableView/JDTableViewDelegate.h>
 
 #endif /* JDTableView_h */

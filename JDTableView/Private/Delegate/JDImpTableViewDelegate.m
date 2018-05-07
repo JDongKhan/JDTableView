@@ -52,7 +52,7 @@
         id sectionInfo = [tableView.jd_viewModel sectionDataAtSection:indexPath.section];
         if ([sectionInfo conformsToProtocol:@protocol(JDSectionModelDataSource)]) {
             id<JDSectionModelDataSource> model = sectionInfo;
-            if([model respondsToSelector:@selector(jd_didSelectCellBlock)]){
+            if([model respondsToSelector:@selector(didSelectCellBlock)]){
                 selectBlock =  [model didSelectCellBlock];
             }
         }

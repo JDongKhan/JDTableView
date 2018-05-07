@@ -20,10 +20,6 @@
     return self;
 }
 
-- (void)clear {
-    [_allDataArray removeAllObjects];
-}
-
 //在第section的区域插入sectionData数据
 - (void)insertSection:(NSUInteger)section sectionData:(id<JDSectionModelDataSource>)sectionData {
     [_allDataArray insertObject:sectionData atIndex:section];

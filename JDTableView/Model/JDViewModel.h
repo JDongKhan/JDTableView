@@ -19,11 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *sectionIndexTitles;
 
 /**
- 清理数据
- */
-- (void)clear;
-
-/**
  在第section的区域插入sectionData数据
 
  @param section 块数

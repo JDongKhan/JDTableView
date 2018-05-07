@@ -36,7 +36,7 @@
     }
 }
 
-- (void)removeAllRowData {
+- (void)removeAllDatas {
     if ([_dataArray isKindOfClass:[NSMutableArray class]]) {
         [(NSMutableArray *)_dataArray removeAllObjects];
     }

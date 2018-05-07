@@ -41,8 +41,10 @@
     [_allDataArray addObject:sectionData];
 }
 
-//增加sectionData,将sectionData作为该块的第一个数据
-- (void)addSectionDataWithArray:(NSArray *)array {
+/**
+ 增加rowDatas,默认加到第一块
+ */
+- (void)addRowDatasFromArray:(NSArray *)array {
     JDSectionModel *sectionInfo = [[JDSectionModel alloc] init];
     [sectionInfo addRowDatasFromArray:array];
     [self addSectionData:sectionInfo];

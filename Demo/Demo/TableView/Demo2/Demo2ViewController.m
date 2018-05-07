@@ -42,7 +42,7 @@
 //读取数据源
 - (void)configDataSource {
     NSDictionary *data = [DataUtils dataFromJsonFile:@"first.json"];
-    [self.tableViewModel addSectionDataWithArray:data[@"items"]];
+    [self.tableViewModel addRowDatasFromArray:data[@"items"]];
 }
 
 - (void)didReceiveMemoryWarning {

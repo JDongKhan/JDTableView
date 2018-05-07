@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  移除所有行数据
  */
-- (void)removeAllRowData;
+- (void)removeAllDatas;
 
 @end
 

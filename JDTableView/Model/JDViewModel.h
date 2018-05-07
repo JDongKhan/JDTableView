@@ -44,11 +44,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addSectionData:(id<JDSectionModelDataSource>)sectionData;
 
 /**
- 增加sectionData,将sectionData作为该块的第一个数据
+ 增加rowDatas,默认加到第一块
 
- @param array 第一块的数据组
+ @param array 数据集合
  */
-- (void)addSectionDataWithArray:(NSArray *)array;
+- (void)addRowDatasFromArray:(NSArray *)array;
 
 /**
  添加行数据

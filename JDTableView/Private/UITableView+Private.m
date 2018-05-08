@@ -59,7 +59,7 @@ NSString *jd_tableView_header_cellID(NSUInteger type) {
         @selector(tableView:commitEditingStyle:forRowAtIndexPath:),
         @selector(tableView:canMoveRowAtIndexPath:)
     };
-    tableView_addMethod(selectors,sizeof(selectors)/sizeof(SEL), [dataSource class],[JDImpTableViewDataSource class]);
+    JD_TABLEVIEW_ADDMETHOD(selectors,sizeof(selectors)/sizeof(SEL), [dataSource class],[JDImpTableViewDataSource class]);
 }
 
 - (void)impDelegate:(id)delegate {
@@ -82,10 +82,10 @@ NSString *jd_tableView_header_cellID(NSUInteger type) {
     if (self.rowHeight > 0) {
         selectors[0] = NULL;
     }
-    tableView_addMethod(selectors,sizeof(selectors)/sizeof(SEL), [delegate class],[JDImpTableViewDelegate class]);
+    JD_TABLEVIEW_ADDMETHOD(selectors,sizeof(selectors)/sizeof(SEL), [delegate class],[JDImpTableViewDelegate class]);
 }
 
-void tableView_addMethod(SEL *selectors,int count, Class toClass, Class impClass){
+void JD_TABLEVIEW_ADDMETHOD(SEL *selectors,int count, Class toClass, Class impClass){
     Class kClass = [toClass class];
     Class dClass = impClass;
     for (NSUInteger index = 0; index < count; index++) {

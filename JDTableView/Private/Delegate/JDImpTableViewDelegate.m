@@ -41,7 +41,6 @@
     if (tableView.jd_config.clearSelectionDelay) {
         [JDImpTableViewDelegate performSelector:@selector(deselect:) withObject:tableView afterDelay:0.5f];
     }
-    id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
     JDDidSelectCellBlock selectBlock = tableView.jd_config.didSelectCellBlock;
     id sectionInfo = [tableView.jd_viewModel sectionDataAtSection:indexPath.section];
     if ([sectionInfo conformsToProtocol:@protocol(JDSectionModelDataSource)]) {
@@ -54,6 +53,7 @@
         }
     }
     if (selectBlock != nil) {
+        id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
         selectBlock(tableView,indexPath,dataInfo);
     }
 }

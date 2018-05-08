@@ -47,8 +47,9 @@
     if ([sectionInfo conformsToProtocol:@protocol(JDSectionModelDataSource)]) {
         id<JDSectionModelDataSource> model = sectionInfo;
         if([model respondsToSelector:@selector(didSelectCellBlock)]){
-            if ([model didSelectCellBlock]) {
-                selectBlock = [model didSelectCellBlock];
+            JDDidSelectCellBlock block = [model didSelectCellBlock];
+            if (block) {
+                selectBlock = block;
             }
         }
     }
@@ -68,8 +69,9 @@
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
     //NSLog(@"计算第%d块，第%d行行高",indexPath.section,indexPath.row);
     //自己计算高度
+    CGFloat height = 44.0f;
     if (tableView.jd_config.cellHeightBlock) {
-        return tableView.jd_config.cellHeightBlock(indexPath,dataInfo);
+        height = tableView.jd_config.cellHeightBlock(indexPath,dataInfo);
     } else {
         //将计算高度的方法交给cell来处理，cell来做，毕竟cell的高度cell来做不是应该的吗？ 顺便也瘦了vc的身，
         UITableViewCell *cell = nil;
@@ -81,12 +83,12 @@
         if (cell != nil) {
             cell.jd_indexPath = indexPath;
             //给cell的dataInfo赋值,并计算高度
-            CGFloat height =  [cell jd_tableView:tableView cellInfo:dataInfo];
-            if (tableView.jd_config.supportHeightCache) {
-                [tableView.indexPathHeightCache cacheHeight:height byIndexPath:indexPath];
-            }
-            return height;
+            height =  [cell jd_tableView:tableView cellInfo:dataInfo];
         }
+    }
+    //缓存高度
+    if (tableView.jd_config.supportHeightCache) {
+        [tableView.indexPathHeightCache cacheHeight:height byIndexPath:indexPath];
     }
     //默认44应该不难理解吧
     return 44.0f;

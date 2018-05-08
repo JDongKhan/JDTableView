@@ -46,22 +46,23 @@
     return nil;\
 } \
 
+#define metamacro_concat(A, B)  metamacro_concat_(A, B)
+#define metamacro_concat_(A, B) A ## B
 
-#define BOOL_ASSOCIATION_METHOD(_set,_get) \
-- (void)_set:(BOOL)value { \
-    objc_setAssociatedObject(self, @selector(_get), @(value), OBJC_ASSOCIATION_COPY_NONATOMIC); \
-} \
-- (BOOL)_get { \
-    return  [objc_getAssociatedObject(self, _cmd) boolValue]; \
-} \
+#define __jd_int_value( __nubmer ) [__nubmer intValue]
+#define __jd_NSInteger_value( __nubmer ) [__nubmer integerValue]
+#define __jd_CGFloat_value( __nubmer ) [__nubmer floatValue]
+#define __jd_BOOL_value( __nubmer ) [__nubmer boolValue]
+#define __jd_NSTimeInterval_value( __nubmer ) [__nubmer doubleValue]
 
 
-#define INT_ASSOCIATION_METHOD(_set,_get,_type) \
-- (void)_set:(_type)value { \
-    objc_setAssociatedObject(self,@selector(_get), @(value), OBJC_ASSOCIATION_COPY_NONATOMIC); \
+#define NUMBER_ASSOCIATION_METHOD(__set,__get,__type) \
+- (void)__set:(__type)value { \
+    objc_setAssociatedObject(self, @selector(__get), @(value), OBJC_ASSOCIATION_COPY_NONATOMIC); \
 } \
-- (_type)_get { \
-    return  [objc_getAssociatedObject(self, _cmd) integerValue]; \
+- (__type)__get { \
+    NSNumber *number =  objc_getAssociatedObject(self, _cmd); \
+    return metamacro_concat(metamacro_concat(__jd_, __type), _value)(number); \
 } \
 
 #endif /* JDTableView_marco_private_h */

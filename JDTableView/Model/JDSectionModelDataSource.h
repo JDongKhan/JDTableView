@@ -19,11 +19,13 @@ typedef NSInteger (^JDCellTypeBlock)(NSIndexPath *indexPath, id dataInfo) ;
 
 /**
  didSelectRowAtIndexPath
-
+ 可以将block放入到cell的数据源中 支持下面3种数据的任意组合
+ 
  @param indexPath 行数信息
  @param dataInfo 行数据
+ @param tableView view视图
  */
-typedef void    (^JDDidSelectCellBlock)(NSIndexPath *indexPath, id dataInfo) ;
+typedef void    (^JDDidSelectCellBlock)(UITableView *tableView,NSIndexPath *indexPath,id dataInfo) ;
 
 
 @protocol JDSectionModelDataSource <NSObject>

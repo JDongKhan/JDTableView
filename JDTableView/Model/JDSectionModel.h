@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark  ----------------rowData-----------
 
 /**
- 一般用于设置、用户信息等本地界面
+ 提供的默认RowModel，一般用于设置、用户信息等本地界面
  */
 @interface JDRowModel : NSObject
 

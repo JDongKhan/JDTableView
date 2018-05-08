@@ -7,7 +7,6 @@
 //
 
 #import "JDImpTableViewDelegate.h"
-#import "JDBlockDescription.h"
 #import "UITableViewCell+JDExtension.h"
 #import "JDViewModel.h"
 #import <objc/runtime.h>
@@ -43,43 +42,18 @@
         [JDImpTableViewDelegate performSelector:@selector(deselect:) withObject:tableView afterDelay:0.5f];
     }
     id dataInfo = [tableView.jd_viewModel rowDataAtIndexPath:indexPath];
-    //好吧，你最大，你先处理
-    if (tableView.jd_config.didSelectCellBlock) {
-        tableView.jd_config.didSelectCellBlock(indexPath,dataInfo);
-    } else {
-        //还是以NSDictionary为主来分析，其它model情况太复杂
-        id selectBlock = nil;
-        id sectionInfo = [tableView.jd_viewModel sectionDataAtSection:indexPath.section];
-        if ([sectionInfo conformsToProtocol:@protocol(JDSectionModelDataSource)]) {
-            id<JDSectionModelDataSource> model = sectionInfo;
-            if([model respondsToSelector:@selector(didSelectCellBlock)]){
-                selectBlock =  [model didSelectCellBlock];
+    JDDidSelectCellBlock selectBlock = tableView.jd_config.didSelectCellBlock;
+    id sectionInfo = [tableView.jd_viewModel sectionDataAtSection:indexPath.section];
+    if ([sectionInfo conformsToProtocol:@protocol(JDSectionModelDataSource)]) {
+        id<JDSectionModelDataSource> model = sectionInfo;
+        if([model respondsToSelector:@selector(didSelectCellBlock)]){
+            if ([model didSelectCellBlock]) {
+                selectBlock = [model didSelectCellBlock];
             }
         }
-        if (selectBlock != nil) {
-            //开始分析block的参数，你可随意设置1个或更多的参数，我来动态处理你的参数
-            //不过不能超出[indexPath,tableView,dataInfo]的范围，因为我还在成长
-            // allocating a block description
-            JDBlockDescription *blockDescription = [[JDBlockDescription alloc] initWithBlock:selectBlock];
-            // getting a method signature for this block
-            NSMethodSignature *methodSignature = blockDescription.blockSignature;
-            NSInteger cout = methodSignature.numberOfArguments;
-            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
-            [invocation setTarget:[selectBlock copy]];
-            //NSArray *arguments = @[indexPath,tableView,dataInfo];
-            for (NSInteger i = 1; i < cout; i++) {
-                const char *type = [methodSignature getArgumentTypeAtIndex:i];
-                NSString *typeName = [NSString stringWithUTF8String:type];
-                void *arg = &dataInfo;
-                if([typeName isEqualToString:@"@\"NSIndexPath\""]){
-                    arg = &indexPath;
-                }else if([typeName isEqualToString:@"@\"UITableView\""]){
-                    arg = &tableView;
-                }
-                [invocation setArgument:arg atIndex:i];
-            }
-            [invocation invoke];
-        }
+    }
+    if (selectBlock != nil) {
+        selectBlock(tableView,indexPath,dataInfo);
     }
 }
 

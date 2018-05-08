@@ -8,9 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "JDSectionModelDataSource.h"
 
-// 可以将block放入到cell的数据源中 支持下面3种数据的任意组合
-// void(^OnSelectedRowBlock)(NSIndexPath *indexPath,id data,UITableView *tableView);
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**

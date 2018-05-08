@@ -43,7 +43,7 @@
     config.headerTypeBlock = ^NSInteger(NSUInteger section, id sectionInfo) {
         return 0;
     };
-    config.didSelectCellBlock = ^(NSIndexPath *indexPath, id dataInfo) {
+    config.didSelectCellBlock = ^(UITableView *tableView,NSIndexPath *indexPath,id dataInfo) {
          [weakSelf.navigationController pushViewController:[[Demo32ViewController alloc] init] animated:YES];
     };
     /////////////////以下是编辑功能，可以不看/////////////////////////

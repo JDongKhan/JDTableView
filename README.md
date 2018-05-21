@@ -16,7 +16,7 @@
 
 该方法支持在数据里面增加tableview的选择事件，默认的cell样式、accessoryView,block等等！
 
-## 使用就2步
+## 使用就四步
 
  >第一步 设置委托类： self.tableView.jd_delegate = self;
  
@@ -24,7 +24,7 @@
  
  >第三步 作配置表，比如配置cell的数组，数据对应的cell数组的索引。
 
- >第四部 构造数据源，将它处取得数据交由JDViewModel来管理。
+ >第四步 构造数据源，将它处取得数据交由JDViewModel来管理。
 
 如：
 

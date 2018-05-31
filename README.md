@@ -6,7 +6,6 @@
 
 对tableview的拓展，利用runtime的class_addMethod向delegate和dataSource动态添加实现协议方法，不用实现一个方法即可展示数据，因为动态添加前会判断delegate和dataSource里面是否已有该方法，所以你可以根据自己的喜好来先行实现！
 
-# -------惯例先上图，图丑但是它不是重点------
 此效果图的实现可看代码，极其简单，不用实现一行协议代码
 
 ![](https://github.com/wangjindong/JDTableView/blob/master/tableview.gif)
@@ -17,7 +16,7 @@
 
 该方法支持在数据里面增加tableview的选择事件，默认的cell样式、accessoryView,block等等！
 
-## 使用就2步
+## 使用就四步
 
  >第一步 设置委托类： self.tableView.jd_delegate = self;
  
@@ -25,7 +24,7 @@
  
  >第三步 作配置表，比如配置cell的数组，数据对应的cell数组的索引。
 
- >第四部 构造数据源，将它处取得数据交由JDViewModel来管理。
+ >第四步 构造数据源，将它处取得数据交由JDViewModel来管理。
 
 如：
 

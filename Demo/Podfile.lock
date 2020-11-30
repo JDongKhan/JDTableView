@@ -1,0 +1,23 @@
+PODS:
+  - JDAutoLayout (1.3.1)
+  - JDTableView (0.0.8)
+
+DEPENDENCIES:
+  - JDAutoLayout
+  - JDTableView (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JDAutoLayout
+
+EXTERNAL SOURCES:
+  JDTableView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JDAutoLayout: 5180b8cae72018761bfa6b8d6a0fb2e5cb81f5d1
+  JDTableView: c2a8b6bfb3add4969f896393fd9360a7b4d6a270
+
+PODFILE CHECKSUM: b15cdea8ae89b13b288eca2c581af0cff3346ba4
+
+COCOAPODS: 1.5.3
